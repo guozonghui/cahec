@@ -1,0 +1,200 @@
+[ 2013-11-15T21:08:59+08:00 ] 127.0.0.1 /cahec/
+ERR: Access denied for user 'root'@'localhost' (using password: YES)
+
+[ 2013-11-15T21:09:54+08:00 ] 127.0.0.1 /cahec/
+ERR: Unknown database 'cahecvrl'
+
+[ 2013-11-15T21:09:55+08:00 ] 127.0.0.1 /cahec/
+ERR: Unknown database 'cahecvrl'
+
+[ 2013-11-15T21:09:57+08:00 ] 127.0.0.1 /cahec/
+ERR: Unknown database 'cahecvrl'
+
+[ 2013-11-15T21:10:29+08:00 ] 127.0.0.1 /cahec/
+ERR: Unknown database 'cahecvrl'
+
+[ 2013-11-15T22:18:46+08:00 ] 127.0.0.1 /index.php?s=/Public/login
+ERR: Action:dumpThe method you requested  does not exist!
+
+[ 2013-11-15T22:21:46+08:00 ] 127.0.0.1 /cahec/index.php?s=/Index/index
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.010096s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.010199s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.000624s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.000598s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.000491s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.000685s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002565s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.000851s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000911s ]
+
+[ 2013-11-15T22:21:46+08:00 ] 127.0.0.1 /cahec/index.php?s=/Public/top
+SQL: SHOW COLUMNS FROM `vrl_public` [ RunTime:0.006119s ]
+ERR: 1146:Table 'cahecvrl.vrl_public' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `vrl_public`
+SQL: select b.node_id from vrl_role_user as a ,vrl_access as b where b.role_id=a.role_id and a.user_id=1  [ RunTime:0.019456s ]
+SQL: select b.id,b.title from vrl_node as a ,vrl_group as b where b.id=a.group_id and b.status=1 and a.id=1  [ RunTime:0.000547s ]
+SQL: select b.id,b.title from vrl_node as a ,vrl_group as b where b.id=a.group_id and b.status=1 and a.id=50  [ RunTime:0.000369s ]
+SQL: select b.id,b.title from vrl_node as a ,vrl_group as b where b.id=a.group_id and b.status=1 and a.id=7  [ RunTime:0.000461s ]
+SQL: select b.id,b.title from vrl_node as a ,vrl_group as b where b.id=a.group_id and b.status=1 and a.id=39  [ RunTime:0.000425s ]
+SQL: select b.id,b.title from vrl_node as a ,vrl_group as b where b.id=a.group_id and b.status=1 and a.id=69  [ RunTime:0.000506s ]
+SQL: select b.id,b.title from vrl_node as a ,vrl_group as b where b.id=a.group_id and b.status=1 and a.id=30  [ RunTime:0.000372s ]
+SQL: select b.id,b.title from vrl_node as a ,vrl_group as b where b.id=a.group_id and b.status=1 and a.id=40  [ RunTime:0.000484s ]
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.013284s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.013379s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.000684s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.000678s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.000486s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.000747s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002759s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.000869s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000928s ]
+
+[ 2013-11-15T22:21:46+08:00 ] 127.0.0.1 /cahec/index.php?s=/Public/drag
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.015404s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015560s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.001137s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.001072s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.000918s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.001020s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.004423s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.001125s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001206s ]
+
+[ 2013-11-15T22:21:46+08:00 ] 127.0.0.1 /cahec/index.php?s=/Public/menu
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined variable: menuTag E:\project\zhenghaiyong\cahec\VRL\Runtime\Cache\c016cf9c21f57e8b13e485da58b9d48a.php 第 22 行.
+NOTIC: [8] Undefined variable: menuTag E:\project\zhenghaiyong\cahec\VRL\Runtime\Cache\c016cf9c21f57e8b13e485da58b9d48a.php 第 22 行.
+NOTIC: [8] Undefined variable: menuTag E:\project\zhenghaiyong\cahec\VRL\Runtime\Cache\c016cf9c21f57e8b13e485da58b9d48a.php 第 22 行.
+NOTIC: [8] Undefined variable: menuTag E:\project\zhenghaiyong\cahec\VRL\Runtime\Cache\c016cf9c21f57e8b13e485da58b9d48a.php 第 22 行.
+NOTIC: [8] Undefined variable: menuTag E:\project\zhenghaiyong\cahec\VRL\Runtime\Cache\c016cf9c21f57e8b13e485da58b9d48a.php 第 22 行.
+NOTIC: [8] Undefined variable: menuTag E:\project\zhenghaiyong\cahec\VRL\Runtime\Cache\c016cf9c21f57e8b13e485da58b9d48a.php 第 22 行.
+NOTIC: [8] Undefined variable: menuTag E:\project\zhenghaiyong\cahec\VRL\Runtime\Cache\c016cf9c21f57e8b13e485da58b9d48a.php 第 22 行.
+INFO: ParseTemplate Behavior ::run [ RunTime:0.018753s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.018864s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.001117s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.001029s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.000741s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.000829s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003927s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.000973s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001039s ]
+
+[ 2013-11-15T22:21:46+08:00 ] 127.0.0.1 /cahec/index.php?s=/Public/footer
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.013988s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.014141s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.001131s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.001096s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.000915s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.001069s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.004493s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.001502s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001578s ]
+
+[ 2013-11-15T22:21:50+08:00 ] 127.0.0.1 /cahec/index.php?s=/Public/top#
+NOTIC: [8] Undefined variable: list E:\project\zhenghaiyong\cahec\VRL\Lib\Action\PublicAction.class.php 第 32 行.
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.012500s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.012590s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.000888s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.000754s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.000636s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.000850s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003301s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.000973s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001031s ]
+
+[ 2013-11-15T22:21:50+08:00 ] 127.0.0.1 /cahec/index.php?s=/Public/menu/tag/2/title/System
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.012040s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.012136s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.000652s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.000589s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.000503s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.000696s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002723s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.000887s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000950s ]
+
+[ 2013-11-15T22:25:04+08:00 ] 127.0.0.1 /cahec/index.php?s=/Public/top#
+NOTIC: [8] Undefined variable: list E:\project\zhenghaiyong\cahec\VRL\Lib\Action\PublicAction.class.php 第 32 行.
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.012913s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.013013s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.000657s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.000702s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.000829s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.001002s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003396s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.001210s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001296s ]
+
+[ 2013-11-15T22:25:04+08:00 ] 127.0.0.1 /cahec/index.php?s=/Public/menu/title/Home
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined variable: menuTag E:\project\zhenghaiyong\cahec\VRL\Runtime\Cache\c016cf9c21f57e8b13e485da58b9d48a.php 第 22 行.
+NOTIC: [8] Undefined variable: menuTag E:\project\zhenghaiyong\cahec\VRL\Runtime\Cache\c016cf9c21f57e8b13e485da58b9d48a.php 第 22 行.
+NOTIC: [8] Undefined variable: menuTag E:\project\zhenghaiyong\cahec\VRL\Runtime\Cache\c016cf9c21f57e8b13e485da58b9d48a.php 第 22 行.
+NOTIC: [8] Undefined variable: menuTag E:\project\zhenghaiyong\cahec\VRL\Runtime\Cache\c016cf9c21f57e8b13e485da58b9d48a.php 第 22 行.
+NOTIC: [8] Undefined variable: menuTag E:\project\zhenghaiyong\cahec\VRL\Runtime\Cache\c016cf9c21f57e8b13e485da58b9d48a.php 第 22 行.
+NOTIC: [8] Undefined variable: menuTag E:\project\zhenghaiyong\cahec\VRL\Runtime\Cache\c016cf9c21f57e8b13e485da58b9d48a.php 第 22 行.
+NOTIC: [8] Undefined variable: menuTag E:\project\zhenghaiyong\cahec\VRL\Runtime\Cache\c016cf9c21f57e8b13e485da58b9d48a.php 第 22 行.
+INFO: ParseTemplate Behavior ::run [ RunTime:0.012416s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.012491s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.000608s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.000713s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.000492s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.000675s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002661s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.000820s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000879s ]
+
+[ 2013-11-15T22:25:05+08:00 ] 127.0.0.1 /cahec/index.php?s=/Public/top#
+NOTIC: [8] Undefined variable: list E:\project\zhenghaiyong\cahec\VRL\Lib\Action\PublicAction.class.php 第 32 行.
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.011863s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.011957s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.000637s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.000697s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.000538s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.003431s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.005502s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.001233s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001300s ]
+
+[ 2013-11-15T22:25:05+08:00 ] 127.0.0.1 /cahec/index.php?s=/Public/menu/tag/2/title/System
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.012677s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.012803s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.001003s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.000725s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.000513s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.000707s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003131s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.000845s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000903s ]
+

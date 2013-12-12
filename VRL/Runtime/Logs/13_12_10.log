@@ -1,0 +1,150 @@
+[ 2013-12-10T23:21:05+08:00 ] 127.0.0.1 /cahec/index.php?s=/Index/index
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.010298s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.010397s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.000596s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.000583s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.000485s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.000697s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002525s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.000828s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000888s ]
+
+[ 2013-12-10T23:21:05+08:00 ] 127.0.0.1 /cahec/index.php?s=/Public/top
+SQL: SHOW COLUMNS FROM `vrl_public` [ RunTime:0.027502s ]
+ERR: 1146:Table 'cahecvrl.vrl_public' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `vrl_public`
+SQL: select b.node_id from vrl_role_user as a ,vrl_access as b where b.role_id=a.role_id and a.user_id=3  [ RunTime:0.010365s ]
+SQL: select b.id,b.title from vrl_node as a ,vrl_group as b where b.id=a.group_id and b.status=1 and a.id=1  [ RunTime:0.031079s ]
+SQL: select b.id,b.title from vrl_node as a ,vrl_group as b where b.id=a.group_id and b.status=1 and a.id=40  [ RunTime:0.000330s ]
+SQL: select b.id,b.title from vrl_node as a ,vrl_group as b where b.id=a.group_id and b.status=1 and a.id=30  [ RunTime:0.000276s ]
+SQL: select b.id,b.title from vrl_node as a ,vrl_group as b where b.id=a.group_id and b.status=1 and a.id=50  [ RunTime:0.000266s ]
+SQL: select b.id,b.title from vrl_node as a ,vrl_group as b where b.id=a.group_id and b.status=1 and a.id=39  [ RunTime:0.000216s ]
+SQL: select b.id,b.title from vrl_node as a ,vrl_group as b where b.id=a.group_id and b.status=1 and a.id=49  [ RunTime:0.000218s ]
+SQL: select b.id,b.title from vrl_node as a ,vrl_group as b where b.id=a.group_id and b.status=1 and a.id=32  [ RunTime:0.000211s ]
+SQL: select b.id,b.title from vrl_node as a ,vrl_group as b where b.id=a.group_id and b.status=1 and a.id=31  [ RunTime:0.000277s ]
+SQL: select b.id,b.title from vrl_node as a ,vrl_group as b where b.id=a.group_id and b.status=1 and a.id=83  [ RunTime:0.000315s ]
+SQL: select b.id,b.title from vrl_node as a ,vrl_group as b where b.id=a.group_id and b.status=1 and a.id=84  [ RunTime:0.000240s ]
+SQL: select b.id,b.title from vrl_node as a ,vrl_group as b where b.id=a.group_id and b.status=1 and a.id=85  [ RunTime:0.000234s ]
+SQL: select b.id,b.title from vrl_node as a ,vrl_group as b where b.id=a.group_id and b.status=1 and a.id=86  [ RunTime:0.000240s ]
+SQL: select b.id,b.title from vrl_node as a ,vrl_group as b where b.id=a.group_id and b.status=1 and a.id=87  [ RunTime:0.000238s ]
+SQL: select b.id,b.title from vrl_node as a ,vrl_group as b where b.id=a.group_id and b.status=1 and a.id=88  [ RunTime:0.000243s ]
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.029173s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.029283s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.000675s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.000756s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.000759s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.000948s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003333s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.000966s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001028s ]
+
+[ 2013-12-10T23:21:06+08:00 ] 127.0.0.1 /cahec/index.php?s=/Public/menu
+INFO: [ view_parse ] --START--
+NOTIC: [8] Undefined variable: menuTag E:\project\zhenghaiyong\cahec\VRL\Runtime\Cache\c016cf9c21f57e8b13e485da58b9d48a.php 第 22 行.
+NOTIC: [8] Undefined variable: menuTag E:\project\zhenghaiyong\cahec\VRL\Runtime\Cache\c016cf9c21f57e8b13e485da58b9d48a.php 第 22 行.
+INFO: ParseTemplate Behavior ::run [ RunTime:0.028246s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.028335s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.000765s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.000739s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.000652s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.000859s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003187s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.001022s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001084s ]
+
+[ 2013-12-10T23:21:06+08:00 ] 127.0.0.1 /cahec/index.php?s=/Public/drag
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.018469s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.018605s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.000793s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.000734s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.000627s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.000968s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003294s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.001046s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001111s ]
+
+[ 2013-12-10T23:21:06+08:00 ] 127.0.0.1 /cahec/index.php?s=/Public/footer
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.010739s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.010839s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.000754s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.000729s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.000615s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.001026s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003298s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.001033s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001099s ]
+
+[ 2013-12-10T23:21:07+08:00 ] 127.0.0.1 /cahec/index.php?s=/Public/top#
+NOTIC: [8] Undefined variable: list E:\project\zhenghaiyong\cahec\VRL\Lib\Action\PublicAction.class.php 第 32 行.
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.012254s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.012347s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.000872s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.000728s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.000629s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.000813s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003215s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.000959s ]
+INFO: [ view_end ] --END-- [ RunTime:0.001020s ]
+
+[ 2013-12-10T23:21:07+08:00 ] 127.0.0.1 /cahec/index.php?s=/Public/menu/tag/5/title/Search
+INFO: [ view_parse ] --START--
+INFO: ParseTemplate Behavior ::run [ RunTime:0.011970s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.012063s ]
+INFO: [ view_filter ] --START--
+INFO: ContentReplace Behavior ::run [ RunTime:0.000975s ]
+INFO: TokenBuild Behavior ::run [ RunTime:0.000599s ]
+INFO: WriteHtmlCache Behavior ::run [ RunTime:0.000484s ]
+INFO: ShowRuntime Behavior ::run [ RunTime:0.000675s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002900s ]
+INFO: [ view_end ] --START--
+INFO: ShowPageTrace Behavior ::run [ RunTime:0.000818s ]
+INFO: [ view_end ] --END-- [ RunTime:0.000877s ]
+
+[ 2013-12-10T23:21:08+08:00 ] 127.0.0.1 /cahec/index.php?s=/Query/geneSelect/family_id/1
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000783s ]
+INFO: CheckLang Behavior ::run [ RunTime:0.001983s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002908s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=1 and node.status=1 [ RunTime:0.000861s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=2 and node.pid=1 and node.status=1 [ RunTime:0.000743s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=3 and node.pid=30 and node.status=1 [ RunTime:0.000719s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=3 and node.pid=40 and node.status=1 [ RunTime:0.000512s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=3 and node.pid=83 and node.status=1 [ RunTime:0.000611s ]
+NOTIC: [8] Undefined index: db_dsn E:\project\zhenghaiyong\cahec\ThinkPHP\Lib\Core\Db.class.php 第 129 行.
+NOTIC: [8] Undefined index: db_params E:\project\zhenghaiyong\cahec\ThinkPHP\Lib\Core\Db.class.php 第 130 行.
+SQL: SHOW COLUMNS FROM `gene` [ RunTime:0.006077s ]
+SQL: SELECT `gene_id`,`name`,`parent_id`,`level`,`left`,`right` FROM `gene` WHERE ( `biodatabase_id` = 1 ) ORDER BY level  [ RunTime:0.022997s ]
+
+[ 2013-12-10T23:21:18+08:00 ] 127.0.0.1 /cahec/index.php?s=/Query/result_ajax/
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001286s ]
+INFO: CheckLang Behavior ::run [ RunTime:0.001989s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003406s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=1 and node.status=1 [ RunTime:0.000624s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=2 and node.pid=1 and node.status=1 [ RunTime:0.000569s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=3 and node.pid=30 and node.status=1 [ RunTime:0.000590s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=3 and node.pid=40 and node.status=1 [ RunTime:0.000437s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=3 and node.pid=83 and node.status=1 [ RunTime:0.000527s ]
+NOTIC: [8] Undefined index: db_dsn E:\project\zhenghaiyong\cahec\ThinkPHP\Lib\Core\Db.class.php 第 129 行.
+NOTIC: [8] Undefined index: db_params E:\project\zhenghaiyong\cahec\ThinkPHP\Lib\Core\Db.class.php 第 130 行.
+SQL: SHOW COLUMNS FROM `bioentry` [ RunTime:0.006036s ]
+SQL: SELECT `bioentry_id` FROM `bioentry` WHERE ( `is_usable` = 'Y' ) AND ( `biodatabase_id` IN ('1') ) AND ( `bioentry_id` > 0 )  [ RunTime:0.020286s ]
+SQL: SELECT bioentry.bioentry_id,B.value AS sequence_version,bioentry.accession,A.value AS name,bioentry.isolation_year,bioentry.isolation_country,bioentry.vrl_host,bioentry.vrl_type,bioentry.vrl_subtype,bioentry.vrl_subsubtype,bioentry.vrl_subsubsubtype,biosequence.length,gene.name AS gene FROM bioentry LEFT JOIN biosequence ON bioentry.bioentry_id = biosequence.bioentry_id LEFT JOIN bioentry_gene ON bioentry.bioentry_id = bioentry_gene.bioentry_id LEFT JOIN gene ON gene.gene_id = bioentry_gene.gene_id LEFT JOIN  bioentry_qualifier_value as A ON bioentry.bioentry_id =  A.bioentry_id LEFT JOIN bioentry_qualifier_value as B ON bioentry.bioentry_id =  B.bioentry_id WHERE bioentry.is_usable = 'Y' AND bioentry.is_usable = 'Y' AND  A.term_id IN (SELECT term_id FROM term WHERE term.name='source') AND  B.term_id IN (SELECT term_id FROM term WHERE term.name='sequence_version') AND bioentry.biodatabase_id IN (1) ORDER BY bioentry.bioentry_id asc [ RunTime:0.541202s ]
+

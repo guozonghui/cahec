@@ -1,0 +1,52 @@
+<include file="Public:header" />
+<div id="main" class="main" >
+<script language="JavaScript">
+<!--
+function resetPwd(){
+var pass	 =	 $F('resetPwd');
+ThinkAjax.send('__URL__/resetPwd/','ajax=1&id={$vo.id}&password='+encodeURIComponent(pass));
+}
+//-->
+</script>
+<div class="content">
+<div class="title">{$Think.lang._EDIT_ACCOUNT_} [ <a href="__URL__">{$Think.lang._BACK_TO_LIST_}</a> ]</div>
+<table cellpadding=3 cellspacing=3>
+<tr>
+	<td class="tRight">{$Think.lang._RESET_PASSWORD_}</td>
+	<td class="tLeft" ><input type="text" name="resetPwd" id="resetPwd"><input type="button" value="{$Think.lang._RESET_PASSWORD_VALUE_}" onclick="resetPwd()" class="submit" style="height:25px"></td>
+</tr>
+<tr>
+	<td class="tRight" colspan="2"><hr></td>
+</tr>
+<form method='post' id="form1" action="__URL__/update/">
+<tr>
+	<td class="tRight" >{$Think.lang._EDIT_USERNAME_}</td>
+	<td class="tLeft" ><input type="text" class="medium bLeftRequire"  check='^\S+$' warning="{$Think.lang._USERNAME_NOT_EMPTY_}" name="account" value="{$vo.account}"></td>
+</tr>
+<tr>
+	<td class="tRight" >{$Think.lang._EDIT_NICKNAME_}</td>
+	<td class="tLeft" ><input type="text" class="medium bLeft" name="nickname" value="{$vo.nickname}"></td>
+</tr>
+
+<tr>
+	<td class="tRight">{$Think.lang._EDIT_STATUS_}</td>
+	<td class="tLeft"><SELECT class="small bLeft"  name="status">
+	<option <eq name="vo.status" value="1" >selected</eq> value="1">{$Think.lang._STATUS_ON_}</option>
+	<option <eq name="vo.status" value="0" >selected</eq> value="0">{$Think.lang._STATUS_OFF_}</option>
+	</SELECT></td>
+</tr>
+<tr>
+	<td class="tRight tTop">{$Think.lang._EDIT_REMARK_}</td>
+	<td class="tLeft"><TEXTAREA class="large bLeft"  name="remark" rows="5" cols="57">{$vo.remark}</textarea></td>
+</tr>
+<tr>
+	<td></td>
+	<td class="center"><input type="hidden" name="id" value="{$vo.id}" >
+	<input type="submit" value="{$Think.lang._SAVE_}" class="small submit">
+	<input type="reset" onclick="history.back(-1)" class="submit  small" value="{$Think.lang._CANCEL_}" >
+	</td>
+</tr>
+</table>
+</form>
+</div>
+</div>

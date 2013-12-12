@@ -1,0 +1,140 @@
+{// 引入标签库 }
+<tagLib name="html" />
+{// 加载头部公共文件 }
+<include file="Public:header" />
+<!-- 菜单区域  -->
+<load href="__PUBLIC__/Js/result.js" />
+
+<!-- 主页面开始 -->
+<div id="main" class="main" >
+<!-- 主体内容  -->
+<div class="content" >
+<div class="title">{$Think.lang._VRL_SHOW_}</div>
+<!-- form  -->
+<!--
+<form method=post action="__URL__"> 
+-->
+
+<div align="center">[ <a href="__URL__">{$Think.lang._BACK_}</a> ]</div>
+<div id="downloadFormat"  style="display:none">
+<form action="" id="downLoadForm" method="post">
+	<input type="button" id="download" value="Download"/>
+	<select name="format" id="format">
+    	<optgroup label="FASTA">
+        	<option selected="selected" value="fP">Protein (FASTA)</option>
+            <option value="fR">Coding region (FASTA)</option>
+            <option value="fN">Nucleotide (FASTA)</option>
+		</optgroup>
+        <optgroup label="Accession List">
+        	<option value="aP">Protein accession list</option>
+            <option value="aN">Nucleotide accesion list</option>
+		</optgroup>
+        <optgroup label="Result Set">
+            <option value="xml">Result set (XML)</option>
+            <option value="csv">Result set (CSV)</option>
+            <option value="tab">Result set (Tab delimited)</option>
+        </optgroup>
+    </select>
+	<a href="#" id="customize">Customize FASTA defline</a>
+    <p style="display:none">
+    	Defline<input type="text" id="defline" name="defline" size="110%" value=">{accession} {strain} {year} {segname}" />
+        <input type="button" id="clear" value="clear" />
+        <input type="button" id="reset" value="reset" />
+    </p>
+    <p style="display:none">
+    	Click to insert:
+        <span id="de_gi" class="click_insert"><a href="#">Gi</a></span>
+        <span id="de_accession" class="click_insert"><a href="#">Accession</a></span>
+        <span id="de_host" class="click_insert"><a href="#">Host</a></span>
+        <span id="de_segment_name" class="click_insert"><a href="#">Segment name</a></span>
+        <span id="de_serotype" class="click_insert"><a href="#">Serotype</a></span>
+        <span id="de_segment_number" class="click_insert"><a href="#">Segment number</a></span>
+        <span id="de_country" class="click_insert"><a href="#">Country</a></span>
+        <span id="de_year" class="click_insert"><a href="#">Year</a></span>
+        <span id="de_strain" class="click_insert"><a href="#">Strain</a></span>
+        <span id="de_virus_name" class="click_insert"><a href="#">Virus name</a></span>
+        <span id="de_definition" class="click_insert"><a href="#">Definition</a></span>
+        <span id="de_age" class="click_insert"><a href="#">Age</a></span>
+        <span id="de_gender" class="click_insert"><a href="#">Gender</a></span>
+        <span id="de_mutations" class="click_insert"><a href="#">Mutations</a></span>
+        <span id="de_CDS_location" class="click_insert"><a href="#">CDS Location</a></span>
+    </p>
+</div>
+<div align="left"><strong>{$show_bioentry_count} sequence(s): </strong></div>
+
+<input type="hidden" id="display_count" value="{$show_bioentry_count}"/>
+<input type="hidden" name="post_data" id="post_data" value="{$post_data}"/>
+<input type="hidden" id="order" name="order" value="bioentry_id" />
+<input type="hidden" id="order_line" name="order_line" value="asc" />
+<input type="hidden" id="check_list_hidden" name="check_list" value="" />
+</form>
+<table width="100%" class="zebra" id="results-table">
+  <colgroup>
+    <col width="5%">     <!-- Accession -->
+    <col width="20%">    <!-- Virus name -->
+    <col width="10%">    <!-- Date -->
+    <col width="5%">     <!-- Country -->
+    <col width="15%">    <!-- Host -->
+    <col width="5%">     <!-- Type -->
+    <col width="5%">     <!-- SubType -->
+    <col width="5%">     <!-- SubSubType -->
+    <col width="5%">     <!-- SubSubSubType -->
+    <col width="15%">    <!-- Genome info -->
+    <col width="5%">     <!-- Length -->
+  </colgroup>
+  <thead>
+    <tr>
+      <th><input type="checkbox" id="choose_all"/></th>
+      <th id="accession"><a href="#">Accession<img class="desc" src="__PUBLIC__/Images/desc.gif" style="display:none" /><img class="asc" src="__PUBLIC__/Images/asc.gif" style="display:none" /></a></th>
+      <th id="name"><a href="#">Virus name<img class="desc" src="__PUBLIC__/Images/desc.gif" style="display:none" /><img class="asc" src="__PUBLIC__/Images/asc.gif" style="display:none" /></a></th>
+      <th id="isolation_year"><a href="#">Date<img class="desc" src="__PUBLIC__/Images/desc.gif" style="display:none" /><img class="asc" src="__PUBLIC__/Images/asc.gif" style="display:none" /></a></th>
+      <th id="isolation_country"><a href="#">Country<img class="desc" src="__PUBLIC__/Images/desc.gif" style="display:none" /><img class="asc" src="__PUBLIC__/Images/asc.gif" style="display:none" /></a></th>
+      <th id="vrl_host"><a href="#">Host<img class="desc" src="__PUBLIC__/Images/desc.gif" style="display:none" /><img class="asc" src="__PUBLIC__/Images/asc.gif" style="display:none" /></a></th>
+      <th id="vrl_type"><a href="#">Type<img class="desc" src="__PUBLIC__/Images/desc.gif" style="display:none" /><img class="asc" src="__PUBLIC__/Images/asc.gif" style="display:none" /></a></th>
+      <th id="vrl_subtype"><a href="#">SubType<img class="desc" src="__PUBLIC__/Images/desc.gif" style="display:none" /><img class="asc" src="__PUBLIC__/Images/asc.gif" style="display:none" /></a></th>
+      <th id="vrl_subsubtype"><a href="#">SubSubType<img class="desc" src="__PUBLIC__/Images/desc.gif" style="display:none" /><img class="asc" src="__PUBLIC__/Images/asc.gif" style="display:none" /></a></th>
+      <th id="vrl_subsubsubtype"><a href="#">SubSubSubType<img class="desc" src="__PUBLIC__/Images/desc.gif" style="display:none" /><img class="asc" src="__PUBLIC__/Images/asc.gif" style="display:none" /></a></th>
+      <th id="gene"><a href="#">Genome info<img class="desc" src="__PUBLIC__/Images/desc.gif" style="display:none" /><img class="asc" src="__PUBLIC__/Images/asc.gif" style="display:none" /></a></th>
+      <th id="length"><a href="#">Length<img class="desc" src="__PUBLIC__/Images/desc.gif" style="display:none" /><img class="asc" src="__PUBLIC__/Images/asc.gif" style="display:none" /></a></th>
+    </tr>
+  </thead>
+  <tbody>
+    <!--<volist name="show_bioentry_info" id="bioentry">
+    <tr>
+    
+     <!-- <td align="center"><input type="checkbox" name="choose" id="choose" class="choose" value="{$bioentry.bioentry_id}"/></td>
+      <td align="center"><a href="http://www.ncbi.nlm.nih.gov/nuccore/{$bioentry.accession}{$bioentry.dotversion}"><if condition = "$bioentry.accession eq ''" >NULL<else/>{$bioentry.accession}</if></a></td>
+      <td align="center"><if condition = "$bioentry.name eq ''" >NULL<else/>{$bioentry.name}</if></td>
+      <td align="center"><if condition = "$bioentry.isolation_year eq ''" >NULL<else/>{$bioentry.isolation_year}</if></td>
+      <td align="center"><if condition = "$bioentry.isolation_country eq ''" >NULL<else/>{$bioentry.isolation_country}</if></td>
+      <td align="center"><if condition = "$bioentry.vrl_host eq ''" >NULL<else/>{$bioentry.vrl_host}</if></td>
+      <td align="center"><if condition = "$bioentry.vrl_type eq ''" >NULL<else/>{$bioentry.vrl_type}</if></td>
+      <td align="center"><if condition = "$bioentry.vrl_subtype eq ''" >NULL<else/>{$bioentry.vrl_subtype}</if></td>
+      <td align="center"><if condition = "$bioentry.vrl_subsubtype eq ''" >NULL<else/>{$bioentry.vrl_subsubtype}</if></td>
+      <td align="center"><if condition = "$bioentry.vrl_subsubsubtype eq ''" >NULL<else/>{$bioentry.vrl_subsubsubtype}</if></td>
+      <td align="center"><if condition = "$bioentry.gene eq ''" >NULL<else/>{$bioentry.gene}</if></td>
+      <td align="center"><if condition = "$bioentry.length eq ''" >NULL<else/>{$bioentry.length}</if></td>
+    </tr>
+	</volist>-->
+    <tr></tr>
+  </tbody>
+</table>
+{$page}
+
+<!--
+</form>
+-->
+<!-- form -->
+<!--  分页显示区域 -->
+<!--
+<div class="page">{$page}</div>
+-->
+
+<if condition="($show_bioentry_count gt 10)">
+<div align="center">[ <a href="__URL__">{$Think.lang._BACK_}</a> ]</div>
+</if>
+
+</div>
+<!-- 主体内容结束 -->
+</div>
+<!-- 主页面结束 -->

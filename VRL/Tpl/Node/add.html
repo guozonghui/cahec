@@ -1,0 +1,49 @@
+<include file="Public:header" />
+<div id="main" class="main" >
+<div class="content">
+<div class="title">{$Think.lang._ADD_} <eq name="level" value="1">{$Think.lang._APP_}</eq> <eq name="level" value="2">{$Think.lang._MODULE_}</eq> <eq name="level" value="3">{$Think.lang._OPERATE_}</eq> [ <a href="__URL__">{$Think.lang._BACK_TO_LIST_}</a> ]</div>
+<form method='post'  id="form1" action="__URL__/insert/">
+<table cellpadding=3 cellspacing=3 >
+<tr>
+	<td class="tRight" ><eq name="level" value="1">{$Think.lang._APP_}</eq><eq name="level" value="2">{$Think.lang._MODULE_}</eq><eq name="level" value="3">{$Think.lang._OPERATE_}</eq>{$Think.lang._ADD_NAME_}</td>
+	<td class="tLeft" ><input type="text" class="medium bLeftRequire"  check='Require' warning="<eq name="level" value="1">{$Think.lang._APP_}</eq><eq name="level" value="2">{$Think.lang._MODULE_}</eq><eq name="level" value="3">{$Think.lang._OPERATE_}</eq>{$Think.lang._NAME_NOT_EMPTY_}" name="name"></td>
+</tr>
+<tr>
+	<td class="tRight" >{$Think.lang._ADD_SHOW_NAME_}</td>
+	<td class="tLeft" ><input type="text" class="medium bLeftRequire" check='Require' warning="{$Think.lang._SHOW_NAME_EMPTY_}"  name="title"></td>
+</tr>
+<tr>
+	<td class="tRight" >{$Think.lang._ADD_GROUP_}</td>
+	<td class="tLeft" >
+	<SELECT class="medium bLeft" name="group_id">
+	<option value="">{$Think.lang._NO_GROUP_}</option>
+	<volist name="list" id="vo">
+	<option value="{$vo.id}">{$vo.title}</option>
+	</volist>
+	</SELECT>
+	</td>
+</tr>
+<tr>
+	<td class="tRight">{$Think.lang._ADD_STATUS_}</td>
+	<td class="tLeft"><SELECT class="small bLeft"  name="status">
+	<option value="1">{$Think.lang._STATUS_ON_}</option>
+	<option value="0">{$Think.lang._STATUS_OFF_}</option>
+	</SELECT></td>
+</tr>
+<tr>
+	<td class="tRight tTop">{$Think.lang._ADD_DESCRIPTION_}</td>
+	<td class="tLeft"><TEXTAREA class="large bLeft" name="remark"  rows="5" cols="57"></textarea></td>
+</tr>
+<tr>
+	<td></td>
+	<td class="center"><div style="width:85%;margin:5px">
+	<input type="hidden" name="level" value="{$level}">
+	<input type="hidden" name="pid" value="{$pid}">
+	<div class="impBtn fLeft"><input type="submit" value="{$Think.lang._SAVE_}" class="save imgButton"></div>
+	<div class="impBtn fRig"><input type="reset" class="reset imgButton" value="{$Think.lang._CLEAR_}" ></div>
+	</div></td>
+</tr>
+</table>
+</form>
+</div>
+</div>
