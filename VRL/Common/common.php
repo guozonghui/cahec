@@ -135,10 +135,11 @@ function convertString($string){
 	return $string;
 }
 
-function delOthers($bioentry,$del){
-	$bioentry_id = 0;
+//function delOthers($bioentry,$del){
+function changeDisplayCountry($bioentry){
+	//$bioentry_id = 0;
 	foreach($bioentry as $k=>$v){
-		if($bioentry[$k]['bioentry_id'] == $bioentry_id){
+		/*if($bioentry[$k]['bioentry_id'] == $bioentry_id){
 			$bioentry[$k]['gene'] = $bioentry[$k-1]['gene']. '-' .$bioentry[$k]['gene'];
 			unset($bioentry[$k-1]);
 			if(strpos($bioentry[$k]['gene'],$del) > -1){
@@ -150,8 +151,8 @@ function delOthers($bioentry,$del){
 				}
 				$bioentry[$k]['gene'] = implode('-',$gene_name);
 			}
-		}
-		$bioentry_id = $bioentry[$k]['bioentry_id'];
+		}*/
+		//$bioentry_id = $bioentry[$k]['bioentry_id'];
 		if($bioentry[$k]['isolation_country'] == "Hong Kong")
 			$bioentry[$k]['isolation_country'] = "China (Hong Kong)";
 		if($bioentry[$k]['isolation_country'] == "Taiwan")
@@ -187,7 +188,40 @@ function data_filter($data){
 		sort($data);
 		return $data;
 }
-
+function analysis_gene($gene){
+	$Gene = M('gene',null,'DB_VRL');
+	$gene_new = array();
+		$gene_array = explode(",",$gene);
+		foreach($gene_array as $val){
+			$gene_one = explode("@@",$val);
+			array_push($gene_new,$gene_one[0]);
+			if($gene_one[2] == 2){
+				if(!strstr($gene,'@@id:'.$gene_one[1])){
+					$condition['gene_id'] = $gene_one[1];
+					$gene_name = $Gene->field('name')->where($condition)->select();
+					if(!in_array($gene_name[0]['name'],$gene_new))
+						array_push($gene_new,$gene_name[0]['name']);
+				}
+			}
+			elseif($gene_one[2] == 3){
+				if(!strstr($gene,'@@id:'.$gene_one[1])){
+					$condition['gene_id'] = $gene_one[1];
+					$gene_name = $Gene->field('name,parent_id')->where($condition)->select();
+					if(!in_array($gene_name[0]['name'],$gene_new))
+						array_push($gene_new,$gene_name[0]['name']);
+					$condition['gene_id'] = $gene_name[0]['parent_id'];
+					$gene_name = $Gene->field('name')->where($condition)->select();
+					if(!in_array($gene_name[0]['name'],$gene_new))
+						array_push($gene_new,$gene_name[0]['name']);
+				}
+			}
+		}
+		foreach($gene_new as $val){
+			$gene_sql .= "bioentry.gene LIKE '%".$val."%' OR ";
+		}
+		$gene_sql = substr($gene_sql,0,strlen($gene_sql)-4);
+	return $gene_sql;
+}
 
 // ZHY
 // http://www.cnblogs.com/ybbqg/archive/2012/04/16/2452033.html

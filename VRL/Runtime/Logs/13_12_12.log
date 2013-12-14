@@ -2975,3 +2975,29 @@ SQL: SELECT DISTINCT  `subsubsubtype` FROM `bioentry` WHERE ( `biodatabase_id` =
 SQL: SHOW COLUMNS FROM `gene` [ RunTime:0.005233s ]
 SQL: SELECT `gene_id`,`name`,`parent_id`,`level`,`left_value`,`right_value` FROM `gene` WHERE ( `biodatabase_id` = 1 ) ORDER BY level  [ RunTime:0.000576s ]
 
+[ 2013-12-12T23:57:41+08:00 ] 127.0.0.1 /cahec/index.php?s=/Query/geneSelect/family_id/1
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000992s ]
+INFO: CheckLang Behavior ::run [ RunTime:0.002353s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003483s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=1 and node.status=1 [ RunTime:0.000615s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=2 and node.pid=1 and node.status=1 [ RunTime:0.000784s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=3 and node.pid=30 and node.status=1 [ RunTime:0.000607s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=3 and node.pid=40 and node.status=1 [ RunTime:0.000454s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=3 and node.pid=83 and node.status=1 [ RunTime:0.000565s ]
+NOTIC: [8] Undefined index: db_dsn E:\project\zhenghaiyong\cahec\ThinkPHP\Lib\Core\Db.class.php 第 129 行.
+NOTIC: [8] Undefined index: db_params E:\project\zhenghaiyong\cahec\ThinkPHP\Lib\Core\Db.class.php 第 130 行.
+SQL: SHOW COLUMNS FROM `bioentry` [ RunTime:0.023473s ]
+SQL: SELECT DISTINCT  `subfamily` FROM `bioentry` WHERE ( `biodatabase_id` = 1 ) AND ( `is_usable` = 'Y' )  [ RunTime:0.025448s ]
+SQL: SELECT DISTINCT  `genus` FROM `bioentry` WHERE ( `biodatabase_id` = 1 ) AND ( `is_usable` = 'Y' )  [ RunTime:0.011938s ]
+SQL: SELECT DISTINCT  `species` FROM `bioentry` WHERE ( `biodatabase_id` = 1 ) AND ( `is_usable` = 'Y' )  [ RunTime:0.011248s ]
+SQL: SELECT DISTINCT  `virus_name` FROM `bioentry` WHERE ( `biodatabase_id` = 1 ) AND ( `is_usable` = 'Y' )  [ RunTime:0.014504s ]
+SQL: SELECT DISTINCT  `host` FROM `bioentry` WHERE ( `biodatabase_id` = 1 ) AND ( `is_usable` = 'Y' )  [ RunTime:0.080133s ]
+SQL: SELECT DISTINCT  `typeA` FROM `bioentry` WHERE ( `biodatabase_id` = 1 ) AND ( `is_usable` = 'Y' )  [ RunTime:0.024999s ]
+SQL: SELECT DISTINCT  `typeB` FROM `bioentry` WHERE ( `biodatabase_id` = 1 ) AND ( `is_usable` = 'Y' )  [ RunTime:0.009437s ]
+SQL: SELECT DISTINCT  `subtype` FROM `bioentry` WHERE ( `biodatabase_id` = 1 ) AND ( `is_usable` = 'Y' )  [ RunTime:0.009632s ]
+SQL: SELECT DISTINCT  `subsubtype` FROM `bioentry` WHERE ( `biodatabase_id` = 1 ) AND ( `is_usable` = 'Y' )  [ RunTime:0.009584s ]
+SQL: SELECT DISTINCT  `subsubsubtype` FROM `bioentry` WHERE ( `biodatabase_id` = 1 ) AND ( `is_usable` = 'Y' )  [ RunTime:0.010902s ]
+SQL: SHOW COLUMNS FROM `gene` [ RunTime:0.006486s ]
+SQL: SELECT `gene_id`,`name`,`parent_id`,`level`,`left_value`,`right_value` FROM `gene` WHERE ( `biodatabase_id` = 1 ) ORDER BY level  [ RunTime:0.001497s ]
+

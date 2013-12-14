@@ -26,30 +26,74 @@
  var URL = __URL__;
 </script>
 
-<form id="form" method=post action="__URL__/result">
+
 <fieldset class="nolegend" id="viruses">
 <legend>Define search set:</legend>
-<fieldset class="nolegend formline" id="selects">
+<table>
+    <tr>
+    	<th><strong>Family</strong></th>
+        <th><strong>Gene</strong></th>
+	</tr>
+    <tr>
+    	<td>
+        	<select name="family" id="family">
+    			<volist name="family" id="vo">	
+                	<option value="{$vo.biodatabase_id}" <eq name="i" value="1">selected</eq>>{$vo.name}</option>
+                </volist>
+   		 	</select>
+       </td>
+       <td>
+            <select size="4" name="gene" id="gene" multiple="multiple">
+                <option value="0" >any</option>
+            </select>
+        </td>
+    </tr>
+</table>
+<table>
+	<tr>
+        <th><strong><a href="#" id="subfamily">SubFamily</a></strong></th>
+        <th><strong><a href="#" id="genus">Genus</a></strong></th>
+        <th><strong><a href="#" id="species">Species</a></strong></th>
+        <th><strong><a href="#" id="virus_name">Virus name</a></strong></th>
+        <th><strong><a href="#" id="host">Host</a></strong></th>
+        <th><strong><a href="#" id="continent">Continent</a></strong></th>
+        <th><strong><a href="#" id="typeA">TypeA</a></strong></th>
+        <th><strong><a href="#" id="typeB">TypeB</a></strong></th>
+        <th><strong><a href="#" id="subType">SubType</a></strong></th>
+        <th><strong><a href="#" id="subsubType">SubsubType</a></strong></th>
+        <th><strong><a href="#" id="subsubsubType">SubsubsubType</a></strong></th>
+    </tr>
+
+</table>
+    <div id="display_div" style="display:none">
+       		<div id="display"></div>
+        	<input type="button" id="display_button" value="submit" />
+    </div>
+    <div id="display_country" style="display:none">
+    	<input type="checkbox" value="0" id="country_any" name="country" checked="checked" />any
+    	<a href="#" id="Africa" class="continent_choose">Africa</a>
+        <a href="#" id="Asia" class="continent_choose">Asia</a>
+        <a href="#" id="North America" class="continent_choose">North America</a>
+        <a href="#" id="South America" class="continent_choose">South America</a>
+        <a href="#" id="Oceania" class="continent_choose">Oceania</a>
+        <a href="#" id="Central America and the Antilles" class="continent_choose">Central America and the Antilles</a>
+        <a href="#" id="Europe" class="continent_choose">Europe</a>
+     	<div id="country_append"></div>
+        <br /><input type="button" id="country_button" value="submit" />
+    </div>
+
+<!--<fieldset class="nolegend formline" id="selects">
 	<table>
     <tr>
-    	<th width="10px"><strong>Family</strong></th>
+    	<th width="1px"><strong>Family</strong></th>
         <th><strong>SubFamily</strong></th>
         <th width="10px"><strong>Genus</strong></th>
         <th><strong>Species</strong></th>
         <th><strong>Virus name</strong></th>
         <th><strong>Gene</strong></th>
-        <th><strong>Host</strong></th>
-        <th><strong>Continent</strong></th>
-        <th><strong>County</strong></th>
-        <th><strong>TypeA</strong></th>
-        <th><strong>TypeB</strong></th>
-        <th><strong>SubType</strong></th>
-        <th><strong>SubsubType</strong></th>
-        <th><strong>SubsubsubType</strong></th>
     </tr>
     <tr>
     	<td>
-            <!--<select size="4" name="family" id="family" multiple="multiple">-->
             <select size="4" name="family" id="family">
                 <volist name="family" id="vo">	
                 	<option value="{$vo.biodatabase_id}" <eq name="i" value="1">selected</eq>>{$vo.name}</option>
@@ -58,48 +102,42 @@
             </select>
         </td>
         <td>
-        	<select size="4" name="subfamily" id="subfamily" multiple="multiple">
+        	<select size="4" name="subfamily" id="subfamily" multiple="multiple" class="query_change">
 				<option value="0" selected>any</option>
-				<volist name="subfamily" id="vo">
-					<option value="{$vo.subfamily}">{$vo.subfamily}</option>
-				</volist>
 			</select>
     	</td>
         <td>
-        	<select size="4" name="genus" id="genus" multiple="multiple">
+        	<select size="4" name="genus" id="genus" multiple="multiple" class="query_change">
 				<option value="0" selected>any</option>
-				<volist name="genus" id="vo">
-					<option value="{$vo.genus}">{$vo.genus}</option>
-				</volist>
 			</select>
     	</td>
         <td>
-        	<select size="4" name="species" id="species" multiple="multiple">
+        	<select size="4" name="species" id="species" multiple="multiple" class="query_change">
 				<option value="0" selected>any</option>
-				<volist name="species" id="vo">
-					<option value="{$vo.species}">{$vo.species}</option>
-				</volist>
 			</select>
     	</td>
         <td>
-        	<select size="4" name="virus_name" id="host" multiple="multiple">
+        	<select size="4" name="virus_name" id="virus_name" multiple="multiple" class="query_change">
 				<option value="0" selected>any</option>
-				<volist name="virus_name" id="vo">
-					<option value="{$vo.virus_name}">{$vo.virus_name}</option>
-				</volist>
 			</select>
     	</td>
         <td>
-            <select size="4" name="gene" id="gene" multiple="multiple">
+            <select size="4" name="gene" id="gene" multiple="multiple" class="query_change">
                 <option value="0" >any</option>
             </select>
         </td>
-        <td>
-        	<select size="4" name="host" id="host" multiple="multiple">
+    </tr>
+</table>
+<table>
+    <tr>
+        <th><strong>Host</strong></th>
+        <th><strong>Continent</strong></th>
+        <th><strong>County</strong></th>
+    </tr>
+    <tr>
+    	<td>
+        	<select size="4" name="host" id="host" multiple="multiple" class="query_change">
 				<option value="0" selected>any</option>
-				<volist name="host" id="vo">
-					<option value="{$vo.host}">{$vo.host}</option>
-				</volist>
 			</select>
     	</td>
         <td>
@@ -115,56 +153,53 @@
 			</select>
         </td>
     	<td>
-            <select size="4" name="country" id="country" multiple="multiple">
+            <select size="4" name="country" id="country" style="width:100px" multiple="multiple">
             	<option value="0" selected>any</option>             
             </select>
         </td>
+	</tr>
+</table>
+<table>
+	<tr>
+	<th><strong>TypeA</strong></th>
+        <th><strong>TypeB</strong></th>
+        <th><strong>SubType</strong></th>
+        <th><strong>SubsubType</strong></th>
+        <th><strong>SubsubsubType</strong></th>
+    </tr>
+	<tr>
         <td>
-        	<select size="4" name="typeA" id="typeA">
+        	<select size="4" name="typeA" id="typeA" class="query_change">
                 <option value="0" selected>any</option>
-                <option value="a">A</option>
-                <option value="b">B</option>
-                <option value="c">C</option>
             </select>
         </td>
         <td>
-        	<select size="4" name="typeB" id="typeB">
+        	<select size="4" name="typeB" id="typeB" class="query_change">
                 <option value="0" selected>any</option>
-                <option value="a">A</option>
-                <option value="b">B</option>
-                <option value="c">C</option>
             </select>
         </td>
         <td>
-            <select size="4" name="subtype" id="subtype">
+            <select size="4" name="subtype" id="subtype" class="query_change">
                 <option value="0" selected>any</option>
-                <option value="a">A</option>
-                <option value="b">B</option>
-                <option value="c">C</option>
         	</select>
         </td>
         <td>
-        	<select size="4" name="subsubtype" id="subsubtype">
+        	<select size="4" name="subsubtype" id="subsubtype" class="query_change">
                 <option value="0" selected>any</option>
-                <option value="a">A</option>
-                <option value="b">B</option>
-                <option value="c">C</option>
             </select>
         </td>
         <td>
-        	<select size="4" name="subsubsubtype" id="subsubsubtype">
+        	<select size="4" name="subsubsubtype" id="subsubsubtype" class="query_change">
                 <option value="0" selected>any</option>
-                <option value="a">A</option>
-                <option value="b">B</option>
-                <option value="c">C</option>
             </select>
         </td>
     </tr>
     </table>
-</fieldset>
+</fieldset>-->
 </fieldset>
 <div id="block0">
 <!-- Collection date -->
+
  <fieldset class="nolegend" id="cdate-from-to">
 <table class="fields">
 <thead>
@@ -202,6 +237,7 @@
 </table>
  </fieldset>
 </div>
+<form id="form" method=post action="__URL__/result">
 <input type="hidden" id="post_data" name="post_data"/>
 <div class="buttons">
 	<span class="action" style="float:left">
