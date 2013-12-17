@@ -63,7 +63,6 @@ div.pic img{border:1px solid gray}
 
 .bold{font-weight:bold}
 .normal{font-weight:normal}
-
 .75{width:75%}
 .100{width:100%}
 .25{width:25%}
@@ -222,6 +221,9 @@ checkbox{border:none;}
 .think_run_time{text-align:center; width:95%;}
 .folder{padding:3px; border:1px solid gray; float:left; width:78px; margin:5px}
 .folder a, a:hover{border:none}
-
+input[type="checkbox"],label{ cursor:pointer;}
+label:hover{ color:#F0C;}
+input[type="button"]{ background-color:#CCC; margin-left:20px; color:#09C}
+input[type="button"]:hover{ color:#F39; background-color:#09F;cursor:pointer;}
 
 <!--.query_change{ width:100px;}-->

@@ -1,6 +1,25 @@
 var dispaly_id = 0;
 var query_term ={
 	family:0,
+	subfamily:'',
+	genus:'',
+	species:'',
+	virus_name:'',
+	host:'',
+	typeA:'',
+	typeB:'',
+	subType:'',
+	subsubType:'',
+	subsubsubType:'',
+	gene:0,
+	country:0,
+	from:0,
+	to:0,
+	flen:0,
+	tlen:0
+};
+var condition_click_time ={
+	family:0,
 	subfamily:0,
 	genus:0,
 	species:0,
@@ -12,49 +31,29 @@ var query_term ={
 	subsubType:0,
 	subsubsubType:0,
 	gene:0,
-	country:0,
+	continent:0,
 	from:0,
 	to:0,
 	flen:0,
 	tlen:0
-	};
+};
 var country_term = '';
 $(document).ready( function() {
 	callbackGene($("#family").val());
 	$(".continent_choose").click(function(){
-		 $("#country_any").attr("checked",false);
-		$("#country_append").empty();
-		switch ($(this).attr('id')){
-			case 'Africa':
-				$("#country_append").append("<input type='checkbox' id='country' name='country' value='Algeria' />Algeria<input type='checkbox' id='country' name='country' value='Angola' />Angola<input type='checkbox' id='country' name='country' value='Benin' />Benin<input type='checkbox' id='country' name='country' value='Botswana' />Botswana<input type='checkbox' id='country' name='country' value='Burkina Faso' />Burkina Faso<input type='checkbox' id='country' name='country' value='Burundi' />Burundi<input type='checkbox' id='country' name='country' value='Cameroon' />Cameroon<input type='checkbox' id='country' name='country' value='Cape Verde' />Cape Verde<input type='checkbox' id='country' name='country' value='Central African Republic' />Central African Republic<input type='checkbox' id='country' name='country' value='Chad' />Chad<input type='checkbox' id='country' name='country' value='Comoros' />Comoros<input type='checkbox' id='country' name='country' value='Republic of the Congo' />Republic of the Congo<input type='checkbox' id='country' name='country' value='Democratic Republic of the Congo' />Democratic Republic of the Congo<input type='checkbox' id='country' name='country' value='Algeria' />Algeria<input type='checkbox' id='country' name='country' value='Angola' />Angola<input type='checkbox' id='country' name='country' value='Benin' />Benin<input type='checkbox' id='country' name='country' value='Botswana' />Botswana<input type='checkbox' id='country' name='country' value='Burkina Faso' />Burkina Faso<input type='checkbox' id='country' name='country' value='Burundi' />Burundi<input type='checkbox' id='country' name='country' value='Cameroon' />Cameroon<input type='checkbox' id='country' name='country' value='Cape Verde' />Cape Verde<input type='checkbox' id='country' name='country' value='Central African Republic' />Central African Republic<input type='checkbox' id='country' name='country' value='Ivory Coast' />Ivory Coast<input type='checkbox' id='country' name='country' value='Djibouti' />Djibouti<input type='checkbox' id='country' name='country' value='Egypt' />Egypt<input type='checkbox' id='country' name='country' value='Equatorial Guinea' />Equatorial Guinea<input type='checkbox' id='country' name='country' value='Eritrea' />Eritrea<input type='checkbox' id='country' name='country' value='Ethiopia' />Ethiopia<input type='checkbox' id='country' name='country' value='Gabon' />Gabon<input type='checkbox' id='country' name='country' value='The Gambia' />The Gambia<input type='checkbox' id='country' name='country' value='Ghana' />Ghana<input type='checkbox' id='country' name='country' value='Guinea' />Guinea<input type='checkbox' id='country' name='country' value='Kenya' />Kenya<input type='checkbox' id='country' name='country' value='Lesotho' />Lesotho<input type='checkbox' id='country' name='country' value='Liberia' />Liberia<input type='checkbox' id='country' name='country' value='Libya' />Libya<input type='checkbox' id='country' name='country' value='Madagascar' />Madagascar<input type='checkbox' id='country' name='country' value='Malawi' />Malawi<input type='checkbox' id='country' name='country' value='Mali' />Mali<input type='checkbox' id='country' name='country' value='Mauritania' />Mauritania<input type='checkbox' id='country' name='country' value='Mauritius' />Mauritius<input type='checkbox' id='country' name='country' value='Morocco' />Morocco<input type='checkbox' id='country' name='country' value='Mozambique' />Mozambique<input type='checkbox' id='country' name='country' value='Namibia' />Namibia<input type='checkbox' id='country' name='country' value='Niger' />Niger<input type='checkbox' id='country' name='country' value='Nigeria' />Nigeria<input type='checkbox' id='country' name='country' value='Rwanda' />Rwanda<input type='checkbox' id='country' name='country' value='S?o Tom' />S?o Tom<input type='checkbox' id='country' name='country' value='Senegal' />Senegal<input type='checkbox' id='country' name='country' value='Seychelles' />Seychelles<input type='checkbox' id='country' name='country' value='Sierra Leone' />Sierra Leone<input type='checkbox' id='country' name='country' value='Somalia' />Somalia<input type='checkbox' id='country' name='country' value='South Africa' />South Africa<input type='checkbox' id='country' name='country' value='South Sudan' />South Sudan<input type='checkbox' id='country' name='country' value='Sudan' />Sudan<input type='checkbox' id='country' name='country' value='Swaziland' />Swaziland<input type='checkbox' id='country' name='country' value='Tanzania  es Salaam, Dodoma' />Tanzania  es Salaam, Dodoma<input type='checkbox' id='country' name='country' value='Togo' />Togo<input type='checkbox' id='country' name='country' value='Tunisia' />Tunisia<input type='checkbox' id='country' name='country' value='Uganda' />Uganda<input type='checkbox' id='country' name='country' value='Western Sahara' />Western Sahara<input type='checkbox' id='country' name='country' value='Zambia' />Zambia<input type='checkbox' id='country' name='country' value='Zaire' />Zaire<input type='checkbox' id='country' name='country' value='Zimbabwe' />Zimbabwe");
-				break;
-			case 'Asia':
-				$("#country_append").append("<input type='checkbox' id='country' name='country' value='Afghanistan'>Afghanistan<input type='checkbox' id='country' name='country' value='Armenia'>Armenia<input type='checkbox' id='country' name='country' value='Azerbaijan'>Azerbaijan<input type='checkbox' id='country' name='country' value='Bahrain'>Bahrain<input type='checkbox' id='country' name='country' value='Bangladesh'>Bangladesh<input type='checkbox' id='country' name='country' value='Bhutan'>Bhutan<input type='checkbox' id='country' name='country' value='Brunei'>Brunei<input type='checkbox' id='country' name='country' value='Cambodia'>Cambodia<input type='checkbox' id='country' name='country' value='China'>China<input type='checkbox' id='country' name='country' value='Taiwan'>China (Taiwan)<input type='checkbox' id='country' name='country' value='Hong Kong'>China (Hong Kong)<input type='checkbox' id='country' name='country' value='Macao'>China (Macao)<input type='checkbox' id='country' name='country' value='East Timor'>East Timor<input type='checkbox' id='country' name='country' value='India'>India<input type='checkbox' id='country' name='country' value='Indonesia'>Indonesia<input type='checkbox' id='country' name='country' value='Iran'>Iran<input type='checkbox' id='country' name='country' value='Iraq'>Iraq<input type='checkbox' id='country' name='country' value='Israel '>Israel<input type='checkbox' id='country' name='country' value='Palestine'>Palestine<input type='checkbox' id='country' name='country' value='Japan'>Japan<input type='checkbox' id='country' name='country' value='Jordan'>Jordan<input type='checkbox' id='country' name='country' value='Kazakhstan'>Kazakhstan<input type='checkbox' id='country' name='country' value='Kuwait'>Kuwait<input type='checkbox' id='country' name='country' value='Kyrgyzstan'>Kyrgyzstan<input type='checkbox' id='country' name='country' value='Laos'>Laos<input type='checkbox' id='country' name='country' value='Lebanon '>Lebanon<input type='checkbox' id='country' name='country' value='Malaysia'>Malaysia<input type='checkbox' id='country' name='country' value='Maldives'>Maldives<input type='checkbox' id='country' name='country' value='Mongolia'>Mongolia<input type='checkbox' id='country' name='country' value='Myanmar'>Myanmar<input type='checkbox' id='country' name='country' value='Nepal'>Nepal<input type='checkbox' id='country' name='country' value='North Korea'>North Korea<input type='checkbox' id='country' name='country' value='Oman'>Oman<input type='checkbox' id='country' name='country' value='Pakistan'>Pakistan<input type='checkbox' id='country' name='country' value='Philippines'>Philippines<input type='checkbox' id='country' name='country' value='Qatar'>Qatar<input type='checkbox' id='country' name='country' value='Russia'>Russia<input type='checkbox' id='country' name='country' value='Saudi Arabia'>Saudi Arabia<input type='checkbox' id='country' name='country' value='Singapore'>Singapore<input type='checkbox' id='country' name='country' value='South Korea'>South Korea<input type='checkbox' id='country' name='country' value='Sri Lanka '>Sri Lanka<input type='checkbox' id='country' name='country' value='Syria'>Syria<input type='checkbox' id='country' name='country' value='Tajikistan'>Tajikistan<input type='checkbox' id='country' name='country' value='Thailand'>Thailand<input type='checkbox' id='country' name='country' value='Tibet'>Tibet<input type='checkbox' id='country' name='country' value='Turkey'>Turkey<input type='checkbox' id='country' name='country' value='Turkmenistan'>Turkmenistan<input type='checkbox' id='country' name='country' value='United Arab Emirates '>United Arab Emirates<input type='checkbox' id='country' name='country' value='Uzbekistan'>Uzbekistan<input type='checkbox' id='country' name='country' value='Vietnam'>Vietnam<input type='checkbox' id='country' name='country' value='Yemen'>Yemen");
-				
-				break;
-			case 'North America':
-				$("#country_append").append("<input type='checkbox' id='country' name='country' value='United States'>United States<input type='checkbox' id='country' name='country' value='Mexico'>Mexico<input type='checkbox' id='country' name='country' value='Canada'>Canada<input type='checkbox' id='country' name='country' value='Greenland'>Greenland");
-				break;
-			case 'South America':
-				$("#country_append").append("<input type='checkbox' id='country' name='country' value='Argentina'>Argentina<input type='checkbox' id='country' name='country' value='Bolivia'>Bolivia<input type='checkbox' id='country' name='country' value='Brazil'>Brazil<input type='checkbox' id='country' name='country' value='Chile'>Chile<input type='checkbox' id='country' name='country' value='Colombia'>Colombia<input type='checkbox' id='country' name='country' value='Ecuador'>Ecuador<input type='checkbox' id='country' name='country' value='French Guiana'>French Guiana<input type='checkbox' id='country' name='country' value='Guyana'>Guyana<input type='checkbox' id='country' name='country' value='Paraguay'>Paraguay<input type='checkbox' id='country' name='country' value='Peru'>Peru<input type='checkbox' id='country' name='country' value='Suriname'>Suriname<input type='checkbox' id='country' name='country' value='Uruguay'>Uruguay<input type='checkbox' id='country' name='country' value='Venezuela'>Venezuela");
-				break;
-			case 'Oceania':
-				$("#country_append").append("<input type='checkbox' id='country' name='country' value='Australia'>Australia<input type='checkbox' id='country' name='country' value='New Zealand'>New Zealand<input type='checkbox' id='country' name='country' value='Fiji'>Fiji<input type='checkbox' id='country' name='country' value='Papua New Guinea'>Papua New Guinea<input type='checkbox' id='country' name='country' value='Solomon Islands'>Solomon Islands<input type='checkbox' id='country' name='country' value='Vanuatu'>Vanuatu<input type='checkbox' id='country' name='country' value='Kiribati'>Kiribati<input type='checkbox' id='country' name='country' value='Marshall Islands'>Marshall Islands<input type='checkbox' id='country' name='country' value='Micronesia'>Micronesia<input type='checkbox' id='country' name='country' value='Nauru'>Nauru<input type='checkbox' id='country' name='country' value='Palau'>Palau<input type='checkbox' id='country' name='country' value='Samoa'>Samoa<input type='checkbox' id='country' name='country' value='Tonga'>Tonga<input type='checkbox' id='country' name='country' value='Tuvalu'>Tuvalu");
-				break;
-			case 'Central America and the Antilles':
-				$("#country_append").append("<input type='checkbox' id='country' name='country' value='Antigua and Barbuda'>Antigua and Barbuda<input type='checkbox' id='country' name='country' value='Bahamas'>Bahamas<input type='checkbox' id='country' name='country' value='Barbados'>Barbados<input type='checkbox' id='country' name='country' value='Belize'>Belize<input type='checkbox' id='country' name='country' value='Cayman Islands'>Cayman Islands<input type='checkbox' id='country' name='country' value='Costa Rica'>Costa Rica<input type='checkbox' id='country' name='country' value='Cuba'>Cuba<input type='checkbox' id='country' name='country' value='Dominica'>Dominica<input type='checkbox' id='country' name='country' value='Dominican Republic'>Dominican Republic<input type='checkbox' id='country' name='country' value='El Salvador'>El Salvador<input type='checkbox' id='country' name='country' value='Grenada'>Grenada<input type='checkbox' id='country' name='country' value='Guatemala'>Guatemala<input type='checkbox' id='country' name='country' value='Haiti'>Haiti<input type='checkbox' id='country' name='country' value='Honduras'>Honduras<input type='checkbox' id='country' name='country' value='Jamaica'>Jamaica<input type='checkbox' id='country' name='country' value='Nicaragua'>Nicaragua<input type='checkbox' id='country' name='country' value='Panama'>Panama<input type='checkbox' id='country' name='country' value='Puerto Rico'>Puerto Rico<input type='checkbox' id='country' name='country' value='Saint Kitts and Nevis'>Saint Kitts and Nevis<input type='checkbox' id='country' name='country' value='Saint Lucia'>Saint Lucia<input type='checkbox' id='country' name='country' value='Saint Vincent and the Grenadines'>Saint Vincent and the Grenadines<input type='checkbox' id='country' name='country' value='Trinidad and Tobago'>Trinidad and Tobago<input type='checkbox' id='country' name='country' value='Turks and Caicos'>Turks and Caicos");
-				break;
-			case 'Europe':
-				$("#country_append").append("<input type='checkbox' id='country' name='country' value='Albania'>Albania<input type='checkbox' id='country' name='country' value='Andorra'>Andorra<input type='checkbox' id='country' name='country' value='Austria'>Austria<input type='checkbox' id='country' name='country' value='Belarus'>Belarus<input type='checkbox' id='country' name='country' value='Belgium'>Belgium<input type='checkbox' id='country' name='country' value='Bosnia and Herzegovina'>Bosnia and Herzegovina<input type='checkbox' id='country' name='country' value='Bulgaria'>Bulgaria<input type='checkbox' id='country' name='country' value='Croatia'>Croatia<input type='checkbox' id='country' name='country' value='Cyprus'>Cyprus<input type='checkbox' id='country' name='country' value='Czech Republic'>Czech Republic<input type='checkbox' id='country' name='country' value='Denmark'>Denmark<input type='checkbox' id='country' name='country' value='Estonia'>Estonia<input type='checkbox' id='country' name='country' value='Finland'>Finland<input type='checkbox' id='country' name='country' value='France'>France<input type='checkbox' id='country' name='country' value='Georgia'>Georgia<input type='checkbox' id='country' name='country' value='Germany'>Germany<input type='checkbox' id='country' name='country' value='Greece'>Greece<input type='checkbox' id='country' name='country' value='Hungary'>Hungary<input type='checkbox' id='country' name='country' value='Iceland'>Iceland<input type='checkbox' id='country' name='country' value='Republic of Ireland'>Republic of Ireland<input type='checkbox' id='country' name='country' value='Italy'>Italy<input type='checkbox' id='country' name='country' value='Latvia'>Latvia<input type='checkbox' id='country' name='country' value='Liechtenstein'>Liechtenstein<input type='checkbox' id='country' name='country' value='Lithuania)'>Lithuania)<input type='checkbox' id='country' name='country' value='Luxembourg'>Luxembourg<input type='checkbox' id='country' name='country' value='Republic of Macedonia'>Republic of Macedonia<input type='checkbox' id='country' name='country' value='Malta'>Malta<input type='checkbox' id='country' name='country' value='Moldova'>Moldova<input type='checkbox' id='country' name='country' value='Monaco'>Monaco<input type='checkbox' id='country' name='country' value='Montenegro'>Montenegro<input type='checkbox' id='country' name='country' value='Netherlands'>Netherlands<input type='checkbox' id='country' name='country' value='Norway'>Norway<input type='checkbox' id='country' name='country' value='Poland'>Poland<input type='checkbox' id='country' name='country' value='Portugal'>Portugal<input type='checkbox' id='country' name='country' value='Romania'>Romania<input type='checkbox' id='country' name='country' value='Russia'>Russia<input type='checkbox' id='country' name='country' value='San Marino'>San Marino<input type='checkbox' id='country' name='country' value='Serbia'>Serbia<input type='checkbox' id='country' name='country' value='Slovakia'>Slovakia<input type='checkbox' id='country' name='country' value='Slovenia'>Slovenia<input type='checkbox' id='country' name='country' value='Spain'>Spain<input type='checkbox' id='country' name='country' value='Sweden'>Sweden<input type='checkbox' id='country' name='country' value='Switzerland'>Switzerland<input type='checkbox' id='country' name='country' value='Turkey'>Turkey<input type='checkbox' id='country' name='country' value='Ukraine'>Ukraine<input type='checkbox' id='country' name='country' value='United Kingdom'>United Kingdom<input type='checkbox' id='country' name='country' value='Vatican City'>Vatican City");
-				break;
-			default:
-				break;
-		}
+		$("#country_any").attr("checked",false);
+		$(".continent_choose").css("color","#174B73");
+		search_id = $(this).attr('id').substring(0,$(this).attr('id').length-2);
+		$(this).css("color","#F00");
+		$(".country_hide").hide();
+		$("#"+search_id).show();
+		
 	});
-	$("#continent").click(function(){
+	/*$("#continent").click(function(){
 		$("#display_country").show();
 		$("#display_div").hide();
 	});
+	
 	$("#country_button").click(function(){
 		$("#display_country").hide();
 		if(query_term['country'] == 0)
@@ -68,7 +67,7 @@ $(document).ready( function() {
 				query_term['country'] += $(this).val()+",";
 			}
 		});
-	});
+	});*/
 	$("#family").change(function(){
 		//alert($(this).val());
 		callbackGene($(this).val());
@@ -135,34 +134,45 @@ $(document).ready( function() {
 					post_data.from = $("#from").val();
 					post_data.to = $("#to").val();*/
 					//post_data =  convertValue($("#family").val()) + '||'+ convertValue($("#gene").val()) +'||'+ convertValue($("#host").val())+'||'+convertValue($("#country").val())+'||'+convertValue($("#type").val())+'||'+convertValue($("#subtype").val())+'||'+convertValue($("#subsubtype").val())+'||'+convertValue($("#subsubsubtype").val())+'||'+convertNull($("#from").val())+'||'+convertNull($("#to").val())+"||"+convertNull($("#flen").val())+"||"+convertNull($("#tlen").val());
-					query_term['family'] = $("#family").val();
+					/*query_term['family'] = $("#family").val();
 					query_term['from'] = convertNull($("#from").val());
 					query_term['to'] = convertNull($("#to").val());
 					query_term['flen'] = convertNull($("#flen").val());
 					query_term['tlen'] = convertNull($("#tlen").val());
+					query_term['gene'] =$("#gene").val();
 					if(query_term['country'] != 0){
 						query_term['country'] = query_term['country'].substring(0,query_term['country'].length-1);
-					}
+					}*/
 					//alert(query_term['gene']);
-					post_data = query_term['family'] +"||"+query_term['subfamily'] +"||"+query_term['genus'] +"||"+query_term['species'] +"||"+query_term['virus_name'] +"||"+query_term['host'] +"||"+query_term['typeA'] +"||"+query_term['typeB'] +"||"+query_term['subType'] +"||"+query_term['subsubType'] +"||"+query_term['subsubsubType']+"||"+query_term['gene']+"||"+query_term['country']+"||"+query_term['from']+"||"+query_term['to']+"||"+query_term['flen']+"||"+query_term['tlen'];
+					//post_data = query_term['family'] +"||"+query_term['subfamily'] +"||"+query_term['genus'] +"||"+query_term['species'] +"||"+query_term['virus_name'] +"||"+query_term['host'] +"||"+query_term['typeA'] +"||"+query_term['typeB'] +"||"+query_term['subType'] +"||"+query_term['subsubType'] +"||"+query_term['subsubsubType']+"||"+query_term['gene']+"||"+query_term['country']+"||"+query_term['from']+"||"+query_term['to']+"||"+query_term['flen']+"||"+query_term['tlen'];  
+					post_data = $("#family").val() +"||"+collect_condition('subfamily') +"||"+collect_condition('genus') +"||"+collect_condition('species') +"||"+collect_condition('virus_name') +"||"+collect_condition('host') +"||"+collect_condition('typeA') +"||"+collect_condition('typeB') +"||"+collect_condition('subType') +"||"+collect_condition('subsubType') +"||"+collect_condition('subsubsubType')+"||"+$("#gene").val()+"||"+collect_condition('country')+"||"+convertNull($("#from").val())+"||"+convertNull($("#to").val())+"||"+convertNull($("#flen").val())+"||"+convertNull($("#tlen").val());
 					$("#post_data").val(post_data);
 					//alert(post_data);
 					$('#form').submit();
 				}
 				
 	});
-	
-
-	$("#choose_all").click(function(){
-		if($(this).checked == true){
-			 $("#choose").attr("checked","true");
+	$(".condition").click(function(){
+		$("#hide_condition").show();
+		$(".condition").css("color","#174B73");
+		search_id = $(this).attr('id').substring(0,$(this).attr('id').length-2);
+		$(this).css("color","#F00");
+		if(condition_click_time[search_id] == 0){
+			condition_click_time[search_id]++;
+			if(search_id == 'continent'){
+				$(".display_condition").hide();
+				$("#continent").show();
+			}
+			else{
+				callbackData($("#family").val(),search_id);
+			}
 		}
 		else{
-			 $("input:checkbox").attr("checked","false");
+			$(".display_condition").hide();
+			$("#"+search_id).show();
 		}
-		
 	});
-	$("#subfamily").click(function(){
+	/*$("#subfamily").click(function(){
 		callbackData($("#family").val(),'subfamily');
 	});	
 	$("#genus").click(function(){
@@ -211,8 +221,33 @@ $(document).ready( function() {
 		}
 		//alert(query_term[display_id]);
 		$("#display_div").hide();
+	});*/
+	$("#hide_condition").click(function(){
+		$(".display_condition").hide();
+		$(".continent_choose").css("color","#174B73");
+		$(".condition").css("color","#174B73");
+		$(this).hide();
 	});
+	
 });
+function collect_condition(id){
+	each_condition = '';
+	$("input[name="+id+"]:checked").each(function(){
+		if($(this).val() == 0){
+			each_condition = 0;
+			return false;
+		}
+		else{
+			each_condition += $(this).val()+",";
+		}
+	});
+	if(each_condition != 0){
+		each_condition = each_condition.substring(0,each_condition.length-1);
+	}
+	if(each_condition == '')
+		each_condition = 0;
+	return each_condition;
+}
 function convertValue(value){
 	if($.inArray("0",value) == -1){
 		//alert(value);
@@ -284,15 +319,35 @@ function callbackGene(family_id){
 
 function displayquery(id,data){
 	display_id = id;
-	$("#display_div").show();
+	var display_info = "<table><tr>";
+	$(".display_condition").hide();
+	$("#"+display_id).show();
 	$("#display_country").hide();
-	$("#display").empty();
-	$("#display").append("<input type='checkbox' name="+id+" id="+id+" value='0' checked='checked' >any");
-	if(data != ''){
-		for(var i=0; i<data.length;i++){
-			$("#display").append("<input type='checkbox' name="+id+" id="+id+" value='"+data[i][id]+"'>"+data[i][id]);
+	//$("#display").empty();
+	//$("#"+display_id).append("<input type='checkbox' name="+id+" value='0' checked='checked' >any");
+	if(data == ''){
+		display_info += "<td><input type='checkbox' name="+id+" id='any"+id+"' value='0' checked='checked' ><label for='any"+id+"'>any</label></td>";
+	}
+	else{
+		data.unshift('any');
+		for(var i=1; i<=data.length;i++){
+			if(i == 1){
+				display_info += "<td><input type='checkbox' name="+id+" id='any'"+id+" value='0' checked='checked' ><label for='any'"+id+">any</label></td>";
+			}
+			else if(i%4 == 0){
+				display_info += "<td><input type='checkbox' name="+id+" id ='"+id+data[i-1][id]+"' value='"+data[i-1][id]+"'><label for='"+id+data[i-1][id]+"'>"+data[i-1][id]+"</label></td></tr><tr>";
+			}
+			else{
+				display_info += "<td><input type='checkbox' name="+id+" id ='"+id+data[i-1][id]+"' value='"+data[i-1][id]+"'><label for='"+id+data[i-1][id]+"'>"+data[i-1][id]+"</label></td>";
+			}
 		}
 	}
+		display_info += "</tr></table>";
+		//for(var j=0; j<(i%5); j++){
+		//	display_info += "<td>"+i+"</td>";
+		//}
+		//alert(display_info);
+		$("#"+display_id).append(display_info);
 }
 
 

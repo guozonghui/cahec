@@ -35,9 +35,9 @@
             <option value="tab">Result set (Tab delimited)</option>
         </optgroup>
     </select>
-	<a href="#" id="customize">Customize FASTA defline</a>
+	<a href="#" id="customize">Customize FASTA define</a>
     <p style="display:none">
-    	Defline<input type="text" id="defline" name="defline" size="110%" value=">{accession} {strain} {year} {segname}" />
+    	Defline<input type="text" id="defline" name="defline" size="110%" value=">{accession} {genus} {year} {virus_name}" />
         <input type="button" id="clear" value="clear" />
         <input type="button" id="reset" value="reset" />
     </p>
@@ -45,19 +45,20 @@
     	Click to insert:
         <span id="de_gi" class="click_insert"><a href="#">Gi</a></span>
         <span id="de_accession" class="click_insert"><a href="#">Accession</a></span>
-        <span id="de_host" class="click_insert"><a href="#">Host</a></span>
-        <span id="de_segment_name" class="click_insert"><a href="#">Segment name</a></span>
-        <span id="de_serotype" class="click_insert"><a href="#">Serotype</a></span>
-        <span id="de_segment_number" class="click_insert"><a href="#">Segment number</a></span>
-        <span id="de_country" class="click_insert"><a href="#">Country</a></span>
-        <span id="de_year" class="click_insert"><a href="#">Year</a></span>
-        <span id="de_strain" class="click_insert"><a href="#">Strain</a></span>
+        <span id="de_subfamily" class="click_insert"><a href="#">Subfamily</a></span>
+        <span id="de_genus" class="click_insert"><a href="#">Genus</a></span>
+        <span id="de_species" class="click_insert"><a href="#">Species</a></span>
         <span id="de_virus_name" class="click_insert"><a href="#">Virus name</a></span>
-        <span id="de_definition" class="click_insert"><a href="#">Definition</a></span>
-        <span id="de_age" class="click_insert"><a href="#">Age</a></span>
-        <span id="de_gender" class="click_insert"><a href="#">Gender</a></span>
-        <span id="de_mutations" class="click_insert"><a href="#">Mutations</a></span>
-        <span id="de_CDS_location" class="click_insert"><a href="#">CDS Location</a></span>
+        <span id="de_year" class="click_insert"><a href="#">Year</a></span>
+        <span id="de_country" class="click_insert"><a href="#">Country</a></span>
+        <span id="de_host" class="click_insert"><a href="#">Host</a></span>
+        <span id="de_typeA" class="click_insert"><a href="#">TypeA</a></span>
+        <span id="de_typeB" class="click_insert"><a href="#">TypeB</a></span>
+        <span id="de_subType" class="click_insert"><a href="#">SubType</a></span>
+        <span id="de_subsubType" class="click_insert"><a href="#">SubsubType</a></span>
+        <span id="de_subsubsubType" class="click_insert"><a href="#">SubsubsubType</a></span>
+        <span id="de_gene" class="click_insert"><a href="#">Genome info</a></span>
+        <span id="de_length" class="click_insert"><a href="#">Length</a></span>
     </p>
 </div>
 <div align="left"><strong>{$show_bioentry_count} sequence(s): </strong></div>
@@ -85,21 +86,21 @@
   <thead>
     <tr>
       <th><input type="checkbox" id="choose_all"/></th>
-      <th id="accession"><a href="#">Accession<img class="desc" src="__PUBLIC__/Images/desc.gif" style="display:none" /><img class="asc" src="__PUBLIC__/Images/asc.gif" style="display:none" /></a></th>
-      <th id="subfamily"><a href="#">SubFamily<img class="desc" src="__PUBLIC__/Images/desc.gif" style="display:none" /><img class="asc" src="__PUBLIC__/Images/asc.gif" style="display:none" /></a></th>
-      <th id="genus"><a href="#">Genus<img class="desc" src="__PUBLIC__/Images/desc.gif" style="display:none" /><img class="asc" src="__PUBLIC__/Images/asc.gif" style="display:none" /></a></th>
-      <th id="species"><a href="#">Species<img class="desc" src="__PUBLIC__/Images/desc.gif" style="display:none" /><img class="asc" src="__PUBLIC__/Images/asc.gif" style="display:none" /></a></th>
-      <th id="virus_name"><a href="#">Virus name<img class="desc" src="__PUBLIC__/Images/desc.gif" style="display:none" /><img class="asc" src="__PUBLIC__/Images/asc.gif" style="display:none" /></a></th>
-      <th id="isolation_year"><a href="#">Date<img class="desc" src="__PUBLIC__/Images/desc.gif" style="display:none" /><img class="asc" src="__PUBLIC__/Images/asc.gif" style="display:none" /></a></th>
-      <th id="isolation_country"><a href="#">Country<img class="desc" src="__PUBLIC__/Images/desc.gif" style="display:none" /><img class="asc" src="__PUBLIC__/Images/asc.gif" style="display:none" /></a></th>
-      <th id="host"><a href="#">Host<img class="desc" src="__PUBLIC__/Images/desc.gif" style="display:none" /><img class="asc" src="__PUBLIC__/Images/asc.gif" style="display:none" /></a></th>
-      <th id="type"><a href="#">TypeA<img class="desc" src="__PUBLIC__/Images/desc.gif" style="display:none" /><img class="asc" src="__PUBLIC__/Images/asc.gif" style="display:none" /></a></th>
-      <th id="type"><a href="#">TypeB<img class="desc" src="__PUBLIC__/Images/desc.gif" style="display:none" /><img class="asc" src="__PUBLIC__/Images/asc.gif" style="display:none" /></a></th>
-      <th id="vrl_subtype"><a href="#">SubType<img class="desc" src="__PUBLIC__/Images/desc.gif" style="display:none" /><img class="asc" src="__PUBLIC__/Images/asc.gif" style="display:none" /></a></th>
-      <th id="subsubtype"><a href="#">SubSubType<img class="desc" src="__PUBLIC__/Images/desc.gif" style="display:none" /><img class="asc" src="__PUBLIC__/Images/asc.gif" style="display:none" /></a></th>
-      <th id="subsubsubtype"><a href="#">SubSubSubType<img class="desc" src="__PUBLIC__/Images/desc.gif" style="display:none" /><img class="asc" src="__PUBLIC__/Images/asc.gif" style="display:none" /></a></th>
-      <th id="gene"><a href="#">Genome info<img class="desc" src="__PUBLIC__/Images/desc.gif" style="display:none" /><img class="asc" src="__PUBLIC__/Images/asc.gif" style="display:none" /></a></th>
-      <th id="length"><a href="#">Length<img class="desc" src="__PUBLIC__/Images/desc.gif" style="display:none" /><img class="asc" src="__PUBLIC__/Images/asc.gif" style="display:none" /></a></th>
+      <th id="accession" class="display_order"><a href="#">Accession<img class="desc" src="__PUBLIC__/Images/desc.gif" style="display:none" /><img class="asc" src="__PUBLIC__/Images/asc.gif" style="display:none" /></a></th>
+      <th id="subfamily" class="display_order"><a href="#">SubFamily<img class="desc" src="__PUBLIC__/Images/desc.gif" style="display:none" /><img class="asc" src="__PUBLIC__/Images/asc.gif" style="display:none" /></a></th>
+      <th id="genus" class="display_order"><a href="#">Genus<img class="desc" src="__PUBLIC__/Images/desc.gif" style="display:none" /><img class="asc" src="__PUBLIC__/Images/asc.gif" style="display:none" /></a></th>
+      <th id="species" class="display_order"><a href="#">Species<img class="desc" src="__PUBLIC__/Images/desc.gif" style="display:none" /><img class="asc" src="__PUBLIC__/Images/asc.gif" style="display:none" /></a></th>
+      <th id="virus_name" class="display_order"><a href="#">Virus name<img class="desc" src="__PUBLIC__/Images/desc.gif" style="display:none" /><img class="asc" src="__PUBLIC__/Images/asc.gif" style="display:none" /></a></th>
+      <th id="isolation_year" class="display_order"><a href="#">Date<img class="desc" src="__PUBLIC__/Images/desc.gif" style="display:none" /><img class="asc" src="__PUBLIC__/Images/asc.gif" style="display:none" /></a></th>
+      <th id="isolation_country" class="display_order"><a href="#">Country<img class="desc" src="__PUBLIC__/Images/desc.gif" style="display:none" /><img class="asc" src="__PUBLIC__/Images/asc.gif" style="display:none" /></a></th>
+      <th id="host" class="display_order"><a href="#">Host<img class="desc" src="__PUBLIC__/Images/desc.gif" style="display:none" /><img class="asc" src="__PUBLIC__/Images/asc.gif" style="display:none" /></a></th>
+      <th id="typeA" class="display_order"><a href="#">TypeA<img class="desc" src="__PUBLIC__/Images/desc.gif" style="display:none" /><img class="asc" src="__PUBLIC__/Images/asc.gif" style="display:none" /></a></th>
+      <th id="typeB" class="display_order"><a href="#">TypeB<img class="desc" src="__PUBLIC__/Images/desc.gif" style="display:none" /><img class="asc" src="__PUBLIC__/Images/asc.gif" style="display:none" /></a></th>
+      <th id="subtype" class="display_order"><a href="#">SubType<img class="desc" src="__PUBLIC__/Images/desc.gif" style="display:none" /><img class="asc" src="__PUBLIC__/Images/asc.gif" style="display:none" /></a></th>
+      <th id="subsubtype" class="display_order"><a href="#">SubSubType<img class="desc" src="__PUBLIC__/Images/desc.gif" style="display:none" /><img class="asc" src="__PUBLIC__/Images/asc.gif" style="display:none" /></a></th>
+      <th id="subsubsubtype" class="display_order"><a href="#">SubSubSubType<img class="desc" src="__PUBLIC__/Images/desc.gif" style="display:none" /><img class="asc" src="__PUBLIC__/Images/asc.gif" style="display:none" /></a></th>
+      <th id="gene" class="display_order"><a href="#">Genome info<img class="desc" src="__PUBLIC__/Images/desc.gif" style="display:none" /><img class="asc" src="__PUBLIC__/Images/asc.gif" style="display:none" /></a></th>
+      <th id="length" class="display_order"><a href="#">Length<img class="desc" src="__PUBLIC__/Images/desc.gif" style="display:none" /><img class="asc" src="__PUBLIC__/Images/asc.gif" style="display:none" /></a></th>
     </tr>
   </thead>
   <tbody>

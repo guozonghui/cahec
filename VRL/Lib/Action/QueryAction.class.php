@@ -326,7 +326,8 @@ class QueryAction extends CommonAction {
 
 	public function downloadQuery(){
 		$str = '';
-		$query_field = '';
+		$query_field = '';  //store download field
+		$line_feed = "\r\n";
 		$check_list = $_POST['check_list'];
 		$format = $_POST['format'];
 		$orderby = $_POST['order'];
@@ -349,45 +350,48 @@ class QueryAction extends CommonAction {
 				case 'accession':
 					$query_field .= "bioentry.accession,";
 					break;
-				case 'host':
-					$query_field .= "bioentry.host,";
+				case 'subfamily':
+					$query_field .= "bioentry.subfamily,";
 					break;
-				case 'segment_name':
-					$query_field .= "bioentry.host,";
+				case 'genus':
+					$query_field .= "bioentry.genus,";
 					break;
-				case 'serotyp':
-					$query_field .= "bioentry.host,";
-					break;	
-				case 'segment_number':
-					$query_field .= "bioentry.host,";
-					break;	
-				case 'country':
-					$query_field .= "bioentry.host,";
-					break;	
-				case 'year':
-					$query_field .= "bioentry.year,";
-					break;	
-				case 'strain':
-					$query_field .= "bioentry.host,";
+				case 'species':
+					$query_field .= "bioentry.species,";
 					break;	
 				case 'virus_name':
+					$query_field .= "bioentry.virus_name,";
+					break;	
+				case 'year':
+					$query_field .= "bioentry.isolation_year,";
+					break;
+				case 'country':
+					$query_field .= "bioentry.isolation_country,";
+					break;	
+				case 'host':
 					$query_field .= "bioentry.host,";
 					break;	
-				case 'definition':
+				case 'typeA':
+					$query_field .= "bioentry.typeA,";
+					break;	
+				case 'typeB':
 					$query_field .= "bioentry.host,";
 					break;	
-				case 'age':
-					$query_field .= "bioentry.host,";
+				case 'subtype':
+					$query_field .= "bioentry.subtype,";
 					break;	
-				case 'gender':
-					$query_field .= "bioentry.host,";
+				case 'subsubtype':
+					$query_field .= "bioentry.subsubtype,";
 					break;	
-				case 'mutations':
-					$query_field .= "bioentry.host,";
+				case 'subsubsubtype':
+					$query_field .= "bioentry.subsubsubtype,";
 					break;	
-				case 'CDS_location':
-					$query_field .= "bioentry.host,";
-					break;	
+				case 'gene':
+					$query_field .= "bioentry.gene,";
+					break;
+				case 'length':
+					$query_field .= "biosequence.length,";
+					break;
 				default:
 					break;
 			}
@@ -397,7 +401,9 @@ class QueryAction extends CommonAction {
 		$filename = date("y-m-d-H-i-s").rand();
 		$filepath = "./Public/Download/";
 		$BioEntry = M('bioentry',null,'DB_VRL');
-		$sql = "SELECT ".$query_field." FROM bioentry LEFT JOIN biosequence ON bioentry.bioentry_id = biosequence.bioentry_id LEFT JOIN bioentry_gene ON bioentry.bioentry_id = bioentry_gene.bioentry_id LEFT JOIN gene ON gene.gene_id = bioentry_gene.gene_id LEFT JOIN  bioentry_qualifier_value ON bioentry.bioentry_id =  bioentry_qualifier_value.bioentry_id WHERE bioentry.bioentry_id IN (" .$check_list. ") AND bioentry.is_usable = 'Y' AND  bioentry_qualifier_value.term_id IN (SELECT term_id FROM term WHERE term.name='source')";
+		$sql = "SELECT ".$query_field." FROM bioentry LEFT JOIN biosequence ON bioentry.bioentry_id = biosequence.bioentry_id WHERE bioentry.bioentry_id IN (" .$check_list. ") AND bioentry.is_usable = 'Y'";
+		
+		//修改数据库结构前的sql-20131217 $sql = "SELECT ".$query_field." FROM bioentry LEFT JOIN biosequence ON bioentry.bioentry_id = biosequence.bioentry_id LEFT JOIN bioentry_gene ON bioentry.bioentry_id = bioentry_gene.bioentry_id LEFT JOIN gene ON gene.gene_id = bioentry_gene.gene_id LEFT JOIN  bioentry_qualifier_value ON bioentry.bioentry_id =  bioentry_qualifier_value.bioentry_id WHERE bioentry.bioentry_id IN (" .$check_list. ") AND bioentry.is_usable = 'Y' AND  bioentry_qualifier_value.term_id IN (SELECT term_id FROM term WHERE term.name='source')";
 		//好用的$sql = "SELECT bioentry.bioentry_id,bioentry.accession,bioentry_qualifier_value.value AS name,bioentry.isolation_year,bioentry.isolation_country,bioentry.host,bioentry.vrl_type,bioentry.vrl_subtype,bioentry.vrl_subsubtype,bioentry.vrl_subsubsubtype,biosequence.length,gene.name AS gene FROM bioentry LEFT JOIN biosequence ON bioentry.bioentry_id = biosequence.bioentry_id LEFT JOIN bioentry_gene ON bioentry.bioentry_id = bioentry_gene.bioentry_id LEFT JOIN gene ON gene.gene_id = bioentry_gene.gene_id LEFT JOIN  bioentry_qualifier_value ON bioentry.bioentry_id =  bioentry_qualifier_value.bioentry_id WHERE bioentry.bioentry_id IN (" .$check_list. ") AND bioentry.is_usable = 'Y' AND  bioentry_qualifier_value.term_id IN (SELECT term_id FROM term WHERE term.name='source')";
 		//$sql = "SELECT bioentry.bioentry_id,bioentry.accession,bioentry_qualifier_value.value AS name,bioentry.isolation_year,bioentry.isolation_country,bioentry.host,bioentry.vrl_type,bioentry.vrl_subtype,bioentry.vrl_subsubtype,bioentry.vrl_subsubsubtype,biosequence.length,gene.name AS gene FROM bioentry LEFT JOIN biosequence ON bioentry.bioentry_id = biosequence.bioentry_id LEFT JOIN bioentry_gene ON bioentry.bioentry_id = bioentry_gene.bioentry_id LEFT JOIN gene ON gene.gene_id = bioentry_gene.gene_id LEFT JOIN  bioentry_qualifier_value ON bioentry.bioentry_id =  bioentry_qualifier_value.bioentry_id WHERE bioentry.bioentry_id IN (" .$check_list. ") AND bioentry.is_usable = 'Y' AND  bioentry_qualifier_value.term_id IN (SELECT term_id FROM term WHERE term.name='source');";
 		switch($orderby){
@@ -420,82 +426,34 @@ class QueryAction extends CommonAction {
 			case 'fP':
 				$filename = $filename.".fa";
 				$fullpath = $filepath.$filename;
-				$fp=fopen($fullpath,"w+");//fopen()的其它开关请参看相关函
+				$fp=fopen($fullpath,"w+");
 				foreach($show_bioentry_info as $k=>$v){
-					//$str = $separate[0];
 					$i = 0;
-					foreach($v as $val){     //查询字段的数据为空时如何处理
+					foreach($v as $n=>$val){ 
+						if($n == "seq"){
+							$str .= $line_feed;
+							for($j=70; $j<=strlen($val); $j+=70){
+								$str_val .= substr($val,$j-70,70).$line_feed;
+							}
+							$val = $str_val.substr($val,$j-70);
+						}
 						$str .= $separate[$i].$val;
 						$i++;
 					}
 					fputs($fp,$str);
-					//fputs($fp,'\n');
+					$str = "\r\n";
 				}
+				
 				fclose($fp);
 				break;
 			case 'fR':
-				$filename = $filename.".fa";
-				$fullpath = $filepath.$filename;
-				$fp=fopen($fullpath,"w+");//fopen()的其它开关请参看相关函
-					fputs($fp,$sql);
-				fclose($fp);
+				
 				break;
 			case 'fN':
 				
 				break;
 			case 'aP':
-				Vendor('PhpExcel.PHPExcel');
-				$j = 1;
-				$objPHPExcel = new PHPExcel();
-				$objPHPExcel-> getProperties()->setTitle("Office 2007 XLSX Test Document")
-							->setSubject("Office 2007 XLSX Test Document")
-							->setDescription("document for Office 2007 XLSX, generated using PHP classes.")
-							->setKeywords("office 2007 openxml php");
-		  
-				$objPHPExcel->setActiveSheetIndex(0);
-				$objPHPExcel->getActiveSheet()->setTitle('VRL');
-				$show_bioentry_info = delOthers($show_bioentry_info,"Others");
-				foreach($show_bioentry_info as $val){
-					$k = 'A';
-					foreach($val as $key=>$data){
-						$objPHPExcel->getActiveSheet()->setCellValueExplicit("$k$j", "$data", PHPExcel_Cell_DataType::TYPE_STRING);
-						$k++;
-					}
-					$j++;         
-				}
-				$selFileFormat = "Excel2003";
-				header('Cache-Control: max-age=0');
-				switch($selFileFormat){
-					case "Excel2003":
-						header('Content-Type: application/vnd.ms-excel');
-						header('Content-Disposition: attachment;filename="basic.xls"');
-						$objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
-						break;
-					case "Excel2007":
-						header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-						header('Content-Disposition: attachment;filename="basic.xlsx"');
-						$objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
-						break;
-					default:
-						$this->error("格式不正确");
-				}
 				
-				switch($selFileFormat){
-					case "Excel2003":
-						$filename = $filename.".xls";
-						$fullpath = $filepath.$filename;
-						$objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
-						$objWriter->save($fullpath);
-						break;
-					case "Excel2007":
-						$filename = $filename.".xlsx";
-						$fullpath = $filepath.$filename;
-						$objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
-						$objWriter->save($fullpath);
-						break;
-					default:
-						$this->error("格式不正确");
-				}
 				break;
 			case 'aN':
 				
@@ -513,7 +471,7 @@ class QueryAction extends CommonAction {
 				break;
 		}
 		download_file($fullpath);
-		//$this->ajaxReturn($fullpath,"success",'1');
+		//$this->ajaxReturn($m,"success",'1');
 	}
 
 }

@@ -40,8 +40,8 @@ $(document).ready( function() {
 			$("#check_list_hidden").val(check_list);
 			$("#downLoadForm").attr('action',URL+"/downloadQuery");
 			$("#downLoadForm").submit();
-			/*
-			var url = URL+"/downloadQuery";
+			
+			/*var url = URL+"/downloadQuery";
 			$.ajax({
 				url: url,
 				type: 'POST',
@@ -82,11 +82,13 @@ $(document).ready( function() {
 		$("#defline").attr('value','>');
 	});
 	$("#reset").click(function(){
-		$("#defline").attr('value','>{accession} {strain} {year} {segname}');
+		$("#defline").attr('value','>{accession} {genus} {year} {virus_name}');
+	});
+	$(".display_order").click(function(){
+		inilize($(this).attr('id'));
 	});
 	
-	
-	$("#accession").click(function(){
+	/*$("#accession").click(function(){
 		inilize("accession");
 	});
 	$("#name").click(function(){
@@ -118,7 +120,7 @@ $(document).ready( function() {
 	});
 	$("#gene").click(function(){
 		inilize("gene");
-	});
+	});*/
 	
 });
 function callbackGetData(post_data,orderby,order_line){
