@@ -1,23 +1,3 @@
-var dispaly_id = 0;
-var query_term ={
-	family:0,
-	subfamily:'',
-	genus:'',
-	species:'',
-	virus_name:'',
-	host:'',
-	typeA:'',
-	typeB:'',
-	subType:'',
-	subsubType:'',
-	subsubsubType:'',
-	gene:0,
-	country:0,
-	from:0,
-	to:0,
-	flen:0,
-	tlen:0
-};
 var condition_click_time ={
 	family:0,
 	subfamily:0,
@@ -49,31 +29,10 @@ $(document).ready( function() {
 		$("#"+search_id).show();
 		
 	});
-	/*$("#continent").click(function(){
-		$("#display_country").show();
-		$("#display_div").hide();
-	});
-	
-	$("#country_button").click(function(){
-		$("#display_country").hide();
-		if(query_term['country'] == 0)
-			query_term['country'] = '';
-		$("input[name='country']:checked").each(function(){
-			if($(this).val() == 0){
-				query_term['country'] = 0;
-				return false;
-			}
-			else{
-				query_term['country'] += $(this).val()+",";
-			}
-		});
-	});*/
 	$("#family").change(function(){
-		//alert($(this).val());
 		callbackGene($(this).val());
 	});
 	$("#gene").change(function(){
-		//var count = $("#gene option").length;
 		var left = 0;
 		var right = 0;
 		var option = $(this).children("option");
@@ -120,31 +79,6 @@ $(document).ready( function() {
 					alert("flen > tlen! please reset");
 				}
 				else{
-					//$('#form').submit();
-					//var post_data = '';
-					/*var post_data = {};
-					post_data.family = convertValue($("#family").val());
-					post_data.gene = convertValue($("#gene").val());
-					post_data.host = convertValue($("#host").val());
-					post_data.country = convertValue($("#country").val());
-					post_data.type = convertValue($("#type").val());
-					post_data.subtype = convertValue($("#subtype").val());
-					post_data.subsubtype = convertValue($("#subsubtype").val());
-					post_data.subsubsubtype = convertValue($("#subsubsubtype").val());
-					post_data.from = $("#from").val();
-					post_data.to = $("#to").val();*/
-					//post_data =  convertValue($("#family").val()) + '||'+ convertValue($("#gene").val()) +'||'+ convertValue($("#host").val())+'||'+convertValue($("#country").val())+'||'+convertValue($("#type").val())+'||'+convertValue($("#subtype").val())+'||'+convertValue($("#subsubtype").val())+'||'+convertValue($("#subsubsubtype").val())+'||'+convertNull($("#from").val())+'||'+convertNull($("#to").val())+"||"+convertNull($("#flen").val())+"||"+convertNull($("#tlen").val());
-					/*query_term['family'] = $("#family").val();
-					query_term['from'] = convertNull($("#from").val());
-					query_term['to'] = convertNull($("#to").val());
-					query_term['flen'] = convertNull($("#flen").val());
-					query_term['tlen'] = convertNull($("#tlen").val());
-					query_term['gene'] =$("#gene").val();
-					if(query_term['country'] != 0){
-						query_term['country'] = query_term['country'].substring(0,query_term['country'].length-1);
-					}*/
-					//alert(query_term['gene']);
-					//post_data = query_term['family'] +"||"+query_term['subfamily'] +"||"+query_term['genus'] +"||"+query_term['species'] +"||"+query_term['virus_name'] +"||"+query_term['host'] +"||"+query_term['typeA'] +"||"+query_term['typeB'] +"||"+query_term['subType'] +"||"+query_term['subsubType'] +"||"+query_term['subsubsubType']+"||"+query_term['gene']+"||"+query_term['country']+"||"+query_term['from']+"||"+query_term['to']+"||"+query_term['flen']+"||"+query_term['tlen'];  
 					post_data = $("#family").val() +"||"+collect_condition('subfamily') +"||"+collect_condition('genus') +"||"+collect_condition('species') +"||"+collect_condition('virus_name') +"||"+collect_condition('host') +"||"+collect_condition('typeA') +"||"+collect_condition('typeB') +"||"+collect_condition('subType') +"||"+collect_condition('subsubType') +"||"+collect_condition('subsubsubType')+"||"+$("#gene").val()+"||"+collect_condition('country')+"||"+convertNull($("#from").val())+"||"+convertNull($("#to").val())+"||"+convertNull($("#flen").val())+"||"+convertNull($("#tlen").val());
 					$("#post_data").val(post_data);
 					//alert(post_data);
@@ -172,56 +106,6 @@ $(document).ready( function() {
 			$("#"+search_id).show();
 		}
 	});
-	/*$("#subfamily").click(function(){
-		callbackData($("#family").val(),'subfamily');
-	});	
-	$("#genus").click(function(){
-		callbackData($("#family").val(),'genus');
-	});	
-	$("#species").click(function(){
-		callbackData($("#family").val(),'species');
-	});	
-	$("#virus_name").click(function(){
-		callbackData($("#family").val(),'virus_name');
-	});	
-	
-	$("#host").click(function(){
-		callbackData($("#family").val(),'host');
-	});	
-	$("#typeA").click(function(){
-		callbackData($("#family").val(),'typeA');
-	});	
-	$("#typeB").click(function(){
-		callbackData($("#family").val(),'typeB');
-	});	
-	$("#subType").click(function(){
-		callbackData($("#family").val(),'subType');
-	});	
-	$("#subsubType").click(function(){
-		callbackData($("#family").val(),'subsubType');
-	});	
-	$("#subsubsubType").click(function(){
-		callbackData($("#family").val(),'subsubsubType');
-	});	
-	$("#display_button").click(function(){
-		query_term[display_id] = '';
-		if(display_id != 0){
-			$("input[name="+display_id+"]:checked").each(function(){
-				if($(this).val() == 0){
-					query_term[display_id] = 0;
-					return false;
-				}
-				else{
-					query_term[display_id] += $(this).val()+",";
-				}
-			});
-		}
-		if(query_term[display_id] != 0){
-			query_term[display_id] = query_term[display_id].substring(0,query_term[display_id].length-1);
-		}
-		//alert(query_term[display_id]);
-		$("#display_div").hide();
-	});*/
 	$("#hide_condition").click(function(){
 		$(".display_condition").hide();
 		$(".continent_choose").css("color","#174B73");
@@ -250,7 +134,6 @@ function collect_condition(id){
 }
 function convertValue(value){
 	if($.inArray("0",value) == -1){
-		//alert(value);
 		return value;
 	}
 	else{
@@ -279,7 +162,6 @@ function callbackData(family_id,id){
 			var data = JSON.parse(data);
 			data = data.data;
 			displayquery(id,data);
-			//displaygene(data.gene);
 		},
 		error: function(XMLHttpRequest, textStatus, errorThrown) {
 			//alert(XMLHttpRequest.status);
@@ -323,8 +205,6 @@ function displayquery(id,data){
 	$(".display_condition").hide();
 	$("#"+display_id).show();
 	$("#display_country").hide();
-	//$("#display").empty();
-	//$("#"+display_id).append("<input type='checkbox' name="+id+" value='0' checked='checked' >any");
 	if(data == ''){
 		display_info += "<td><input type='checkbox' name="+id+" id='any"+id+"' value='0' checked='checked' ><label for='any"+id+"'>any</label></td>";
 	}
@@ -332,7 +212,7 @@ function displayquery(id,data){
 		data.unshift('any');
 		for(var i=1; i<=data.length;i++){
 			if(i == 1){
-				display_info += "<td><input type='checkbox' name="+id+" id='any'"+id+" value='0' checked='checked' ><label for='any'"+id+">any</label></td>";
+				display_info += "<td><input type='checkbox' name="+id+" id='any"+id+"' value='0' checked='checked' ><label for='any"+id+"'>any</label></td>";
 			}
 			else if(i%4 == 0){
 				display_info += "<td><input type='checkbox' name="+id+" id ='"+id+data[i-1][id]+"' value='"+data[i-1][id]+"'><label for='"+id+data[i-1][id]+"'>"+data[i-1][id]+"</label></td></tr><tr>";
@@ -343,10 +223,6 @@ function displayquery(id,data){
 		}
 	}
 		display_info += "</tr></table>";
-		//for(var j=0; j<(i%5); j++){
-		//	display_info += "<td>"+i+"</td>";
-		//}
-		//alert(display_info);
 		$("#"+display_id).append(display_info);
 }
 
