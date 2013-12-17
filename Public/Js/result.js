@@ -13,11 +13,9 @@ var order_change ={
 		vrl_subsubsubtype:0,
 		length:0,
 		gene:0,
-	};
-//var info = "";
+};
 $(document).ready( function() {
 	callbackGetData($("#post_data").val(),"bioentry_id","asc");
-	//circlingInterval = setInterval(function(){callbackGetData($("#post_data").val(),"bioentry_id"); }, 1000);
 	$("#choose_all").click(function() {
 		$('input[name="choose"]').attr("checked",this.checked); 
 	});
@@ -29,7 +27,6 @@ $(document).ready( function() {
 	$("#download").click(function(){
 		var check_list = '';
 		$('input[name="choose"]:checked').each(function(){
-				//if($(this).checked == true)
 					check_list += $(this).val() + ',';
 		});
 		if(check_list == ''){
@@ -40,29 +37,6 @@ $(document).ready( function() {
 			$("#check_list_hidden").val(check_list);
 			$("#downLoadForm").attr('action',URL+"/downloadQuery");
 			$("#downLoadForm").submit();
-			
-			/*var url = URL+"/downloadQuery";
-			$.ajax({
-				url: url,
-				type: 'POST',
-				async: true,
-				//contentType:"application/octet-stream",
-				data: {'check_list':check_list,'format':$("#format").val(),'order':$("#order").val(),'order_line':$("#order_line").val(),'field':$("#defline").val()},
-				dataType: 'json',
-				success: function(data){
-					//alert("./Public/Download/"+data.data);
-					//$('#download').attr("href","./Public/Download/"+data.data);
-					window.location.href = data.data;
-					// $('#idown').attr('src', 'http://127.0.0.1/cahec/Public/Download/'+data.data);
-					
-				},
-				error: function(XMLHttpRequest, textStatus, errorThrown) {
-		
-				},
-				complete: function (){
-					
-				}
-			});*/
 		}
 	});
 	$("#customize").click(function(){
@@ -87,41 +61,6 @@ $(document).ready( function() {
 	$(".display_order").click(function(){
 		inilize($(this).attr('id'));
 	});
-	
-	/*$("#accession").click(function(){
-		inilize("accession");
-	});
-	$("#name").click(function(){
-		inilize("name");
-	});
-	$("#isolation_year").click(function(){
-		inilize("isolation_year");
-	});
-	$("#isolation_country").click(function(){
-		inilize("isolation_country");
-	});
-	$("#host").click(function(){
-		inilize("host");
-	});
-	$("#vrl_type").click(function(){
-		inilize("vrl_type");
-	});
-	$("#vrl_subtype").click(function(){
-		inilize("vrl_subtype");
-	});
-	$("#vrl_subsubtype").click(function(){
-		inilize("vrl_subsubtype");
-	});
-	$("#vrl_subsubsubtype").click(function(){
-		inilize("vrl_subsubsubtype");
-	});
-	$("#length").click(function(){
-		inilize("length");
-	});
-	$("#gene").click(function(){
-		inilize("gene");
-	});*/
-	
 });
 function callbackGetData(post_data,orderby,order_line){
 	var url = URL+"/result_ajax/";
@@ -130,12 +69,9 @@ function callbackGetData(post_data,orderby,order_line){
 		type: 'POST',
 		async: true,
 		data:{"post_data":post_data,"orderby":orderby,"order_line":order_line},
-		//dataType: 'json',
 		success: function(data){
 			var data = JSON.parse(data);
-			//var data = JSON.parse(data.data);
 			 info = data.data;
-			// alert(info.length);
 			 display(info);
 			 circlingInterval = setInterval(function(){display(info); }, 5000);
 			 

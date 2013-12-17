@@ -10,10 +10,6 @@
 <!-- 主体内容  -->
 <div class="content" >
 <div class="title">{$Think.lang._VRL_SHOW_}</div>
-<!-- form  -->
-<!--
-<form method=post action="__URL__"> 
--->
 
 <div align="center">[ <a href="__URL__">{$Think.lang._BACK_}</a> ]</div>
 <div id="downloadFormat"  style="display:none">
@@ -70,19 +66,6 @@
 <input type="hidden" id="check_list_hidden" name="check_list" value="" />
 </form>
 <table width="100%" class="zebra" id="results-table">
-  <colgroup>
-    <col width="5%">     <!-- Accession -->
-    <col width="20%">    <!-- Virus name -->
-    <col width="10%">    <!-- Date -->
-    <col width="5%">     <!-- Country -->
-    <col width="15%">    <!-- Host -->
-    <col width="5%">     <!-- Type -->
-    <col width="5%">     <!-- SubType -->
-    <col width="5%">     <!-- SubSubType -->
-    <col width="5%">     <!-- SubSubSubType -->
-    <col width="15%">    <!-- Genome info -->
-    <col width="5%">     <!-- Length -->
-  </colgroup>
   <thead>
     <tr>
       <th><input type="checkbox" id="choose_all"/></th>
@@ -104,36 +87,9 @@
     </tr>
   </thead>
   <tbody>
-    <!--<volist name="show_bioentry_info" id="bioentry">
-    <tr>
-    
-     <!-- <td align="center"><input type="checkbox" name="choose" id="choose" class="choose" value="{$bioentry.bioentry_id}"/></td>
-      <td align="center"><a href="http://www.ncbi.nlm.nih.gov/nuccore/{$bioentry.accession}{$bioentry.dotversion}"><if condition = "$bioentry.accession eq ''" >NULL<else/>{$bioentry.accession}</if></a></td>
-      <td align="center"><if condition = "$bioentry.name eq ''" >NULL<else/>{$bioentry.name}</if></td>
-      <td align="center"><if condition = "$bioentry.isolation_year eq ''" >NULL<else/>{$bioentry.isolation_year}</if></td>
-      <td align="center"><if condition = "$bioentry.isolation_country eq ''" >NULL<else/>{$bioentry.isolation_country}</if></td>
-      <td align="center"><if condition = "$bioentry.vrl_host eq ''" >NULL<else/>{$bioentry.vrl_host}</if></td>
-      <td align="center"><if condition = "$bioentry.vrl_type eq ''" >NULL<else/>{$bioentry.vrl_type}</if></td>
-      <td align="center"><if condition = "$bioentry.vrl_subtype eq ''" >NULL<else/>{$bioentry.vrl_subtype}</if></td>
-      <td align="center"><if condition = "$bioentry.vrl_subsubtype eq ''" >NULL<else/>{$bioentry.vrl_subsubtype}</if></td>
-      <td align="center"><if condition = "$bioentry.vrl_subsubsubtype eq ''" >NULL<else/>{$bioentry.vrl_subsubsubtype}</if></td>
-      <td align="center"><if condition = "$bioentry.gene eq ''" >NULL<else/>{$bioentry.gene}</if></td>
-      <td align="center"><if condition = "$bioentry.length eq ''" >NULL<else/>{$bioentry.length}</if></td>
-    </tr>
-	</volist>-->
     <tr></tr>
   </tbody>
 </table>
-{$page}
-
-<!--
-</form>
--->
-<!-- form -->
-<!--  分页显示区域 -->
-<!--
-<div class="page">{$page}</div>
--->
 
 <if condition="($show_bioentry_count gt 10)">
 <div align="center">[ <a href="__URL__">{$Think.lang._BACK_}</a> ]</div>

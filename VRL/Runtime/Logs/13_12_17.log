@@ -4949,3 +4949,305 @@ NOTIC: [8] Undefined index: db_params E:\project\zhenghaiyong\cahec\ThinkPHP\Lib
 SQL: SHOW COLUMNS FROM `bioentry` [ RunTime:0.006512s ]
 SQL: SELECT bioentry.bioentry_id,B.value AS sequence_version,bioentry.accession,bioentry.subfamily,bioentry.genus,bioentry.species,bioentry.virus_name,bioentry.isolation_year,bioentry.isolation_country,bioentry.host,bioentry.typeA,bioentry.typeB,bioentry.subtype,bioentry.subsubtype,bioentry.subsubsubtype,biosequence.length,bioentry.gene FROM bioentry LEFT JOIN biosequence ON bioentry.bioentry_id = biosequence.bioentry_id LEFT JOIN bioentry_qualifier_value as B ON bioentry.bioentry_id =  B.bioentry_id WHERE bioentry.is_usable = 'Y' AND  B.term_id IN (SELECT term_id FROM term WHERE term.name='sequence_version') AND biodatabase_id IN (1) ORDER BY bioentry.bioentry_id asc [ RunTime:0.161471s ]
 
+[ 2013-12-17T22:53:47+08:00 ] 127.0.0.1 /cahec/index.php?s=/Query/geneSelect/family_id/1
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000794s ]
+INFO: CheckLang Behavior ::run [ RunTime:0.002235s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003151s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=1 and node.status=1 [ RunTime:0.000674s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=2 and node.pid=1 and node.status=1 [ RunTime:0.001066s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=3 and node.pid=30 and node.status=1 [ RunTime:0.000939s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=3 and node.pid=40 and node.status=1 [ RunTime:0.000523s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=3 and node.pid=83 and node.status=1 [ RunTime:0.000635s ]
+NOTIC: [8] Undefined index: db_dsn E:\project\zhenghaiyong\cahec\ThinkPHP\Lib\Core\Db.class.php 第 129 行.
+NOTIC: [8] Undefined index: db_params E:\project\zhenghaiyong\cahec\ThinkPHP\Lib\Core\Db.class.php 第 130 行.
+SQL: SHOW COLUMNS FROM `gene` [ RunTime:0.005874s ]
+SQL: SELECT `gene_id`,`name`,`parent_id`,`level`,`left_value`,`right_value` FROM `gene` WHERE ( `biodatabase_id` = 1 ) ORDER BY level  [ RunTime:0.000556s ]
+
+[ 2013-12-17T22:53:48+08:00 ] 127.0.0.1 /cahec/index.php?s=/Query/result_ajax/
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001246s ]
+INFO: CheckLang Behavior ::run [ RunTime:0.002085s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003484s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=1 and node.status=1 [ RunTime:0.000772s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=2 and node.pid=1 and node.status=1 [ RunTime:0.000660s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=3 and node.pid=30 and node.status=1 [ RunTime:0.000614s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=3 and node.pid=40 and node.status=1 [ RunTime:0.000425s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=3 and node.pid=83 and node.status=1 [ RunTime:0.010854s ]
+NOTIC: [8] Undefined index: db_dsn E:\project\zhenghaiyong\cahec\ThinkPHP\Lib\Core\Db.class.php 第 129 行.
+NOTIC: [8] Undefined index: db_params E:\project\zhenghaiyong\cahec\ThinkPHP\Lib\Core\Db.class.php 第 130 行.
+SQL: SHOW COLUMNS FROM `bioentry` [ RunTime:0.008220s ]
+SQL: SELECT bioentry.bioentry_id,B.value AS sequence_version,bioentry.accession,bioentry.subfamily,bioentry.genus,bioentry.species,bioentry.virus_name,bioentry.isolation_year,bioentry.isolation_country,bioentry.host,bioentry.typeA,bioentry.typeB,bioentry.subtype,bioentry.subsubtype,bioentry.subsubsubtype,biosequence.length,bioentry.gene FROM bioentry LEFT JOIN biosequence ON bioentry.bioentry_id = biosequence.bioentry_id LEFT JOIN bioentry_qualifier_value as B ON bioentry.bioentry_id =  B.bioentry_id WHERE bioentry.is_usable = 'Y' AND  B.term_id IN (SELECT term_id FROM term WHERE term.name='sequence_version') AND biodatabase_id IN (1) ORDER BY bioentry.bioentry_id asc [ RunTime:0.168029s ]
+
+[ 2013-12-17T22:59:20+08:00 ] 127.0.0.1 /cahec/index.php?s=/Query/geneSelect/family_id/1
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000863s ]
+INFO: CheckLang Behavior ::run [ RunTime:0.002118s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003113s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=1 and node.status=1 [ RunTime:0.000619s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=2 and node.pid=1 and node.status=1 [ RunTime:0.000567s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=3 and node.pid=30 and node.status=1 [ RunTime:0.000603s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=3 and node.pid=40 and node.status=1 [ RunTime:0.000422s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=3 and node.pid=83 and node.status=1 [ RunTime:0.000548s ]
+NOTIC: [8] Undefined index: db_dsn E:\project\zhenghaiyong\cahec\ThinkPHP\Lib\Core\Db.class.php 第 129 行.
+NOTIC: [8] Undefined index: db_params E:\project\zhenghaiyong\cahec\ThinkPHP\Lib\Core\Db.class.php 第 130 行.
+SQL: SHOW COLUMNS FROM `gene` [ RunTime:0.005726s ]
+SQL: SELECT `gene_id`,`name`,`parent_id`,`level`,`left_value`,`right_value` FROM `gene` WHERE ( `biodatabase_id` = 1 ) ORDER BY level  [ RunTime:0.000536s ]
+
+[ 2013-12-17T22:59:28+08:00 ] 127.0.0.1 /cahec/index.php?s=/Query/result_ajax/
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000829s ]
+INFO: CheckLang Behavior ::run [ RunTime:0.001829s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002789s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=1 and node.status=1 [ RunTime:0.000624s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=2 and node.pid=1 and node.status=1 [ RunTime:0.000565s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=3 and node.pid=30 and node.status=1 [ RunTime:0.000589s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=3 and node.pid=40 and node.status=1 [ RunTime:0.000507s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=3 and node.pid=83 and node.status=1 [ RunTime:0.001222s ]
+NOTIC: [8] Undefined index: db_dsn E:\project\zhenghaiyong\cahec\ThinkPHP\Lib\Core\Db.class.php 第 129 行.
+NOTIC: [8] Undefined index: db_params E:\project\zhenghaiyong\cahec\ThinkPHP\Lib\Core\Db.class.php 第 130 行.
+SQL: SHOW COLUMNS FROM `bioentry` [ RunTime:0.006108s ]
+SQL: SELECT bioentry.bioentry_id,B.value AS sequence_version,bioentry.accession,bioentry.subfamily,bioentry.genus,bioentry.species,bioentry.virus_name,bioentry.isolation_year,bioentry.isolation_country,bioentry.host,bioentry.typeA,bioentry.typeB,bioentry.subtype,bioentry.subsubtype,bioentry.subsubsubtype,biosequence.length,bioentry.gene FROM bioentry LEFT JOIN biosequence ON bioentry.bioentry_id = biosequence.bioentry_id LEFT JOIN bioentry_qualifier_value as B ON bioentry.bioentry_id =  B.bioentry_id WHERE bioentry.is_usable = 'Y' AND  B.term_id IN (SELECT term_id FROM term WHERE term.name='sequence_version') AND biodatabase_id IN (1) AND bioentry.isolation_country IN ('China','Taiwan') ORDER BY bioentry.bioentry_id asc [ RunTime:0.038723s ]
+
+[ 2013-12-17T23:00:40+08:00 ] 127.0.0.1 /cahec/index.php?s=/Query/result_ajax/
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001075s ]
+INFO: CheckLang Behavior ::run [ RunTime:0.002343s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003543s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=1 and node.status=1 [ RunTime:0.000785s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=2 and node.pid=1 and node.status=1 [ RunTime:0.000755s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=3 and node.pid=30 and node.status=1 [ RunTime:0.000686s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=3 and node.pid=40 and node.status=1 [ RunTime:0.000455s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=3 and node.pid=83 and node.status=1 [ RunTime:0.000620s ]
+NOTIC: [8] Undefined index: db_dsn E:\project\zhenghaiyong\cahec\ThinkPHP\Lib\Core\Db.class.php 第 129 行.
+NOTIC: [8] Undefined index: db_params E:\project\zhenghaiyong\cahec\ThinkPHP\Lib\Core\Db.class.php 第 130 行.
+SQL: SHOW COLUMNS FROM `bioentry` [ RunTime:0.008276s ]
+SQL: SELECT bioentry.bioentry_id,B.value AS sequence_version,bioentry.accession,bioentry.subfamily,bioentry.genus,bioentry.species,bioentry.virus_name,bioentry.isolation_year,bioentry.isolation_country,bioentry.host,bioentry.typeA,bioentry.typeB,bioentry.subtype,bioentry.subsubtype,bioentry.subsubsubtype,biosequence.length,bioentry.gene FROM bioentry LEFT JOIN biosequence ON bioentry.bioentry_id = biosequence.bioentry_id LEFT JOIN bioentry_qualifier_value as B ON bioentry.bioentry_id =  B.bioentry_id WHERE bioentry.is_usable = 'Y' AND  B.term_id IN (SELECT term_id FROM term WHERE term.name='sequence_version') AND biodatabase_id IN (1) AND bioentry.isolation_country IN ('China','Taiwan') ORDER BY bioentry.accession asc [ RunTime:0.042965s ]
+
+[ 2013-12-17T23:04:09+08:00 ] 127.0.0.1 /cahec/index.php?s=/Query/geneSelect/family_id/1
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000777s ]
+INFO: CheckLang Behavior ::run [ RunTime:0.001743s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002648s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=1 and node.status=1 [ RunTime:0.000654s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=2 and node.pid=1 and node.status=1 [ RunTime:0.000610s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=3 and node.pid=30 and node.status=1 [ RunTime:0.001167s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=3 and node.pid=40 and node.status=1 [ RunTime:0.000528s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=3 and node.pid=83 and node.status=1 [ RunTime:0.000588s ]
+NOTIC: [8] Undefined index: db_dsn E:\project\zhenghaiyong\cahec\ThinkPHP\Lib\Core\Db.class.php 第 129 行.
+NOTIC: [8] Undefined index: db_params E:\project\zhenghaiyong\cahec\ThinkPHP\Lib\Core\Db.class.php 第 130 行.
+SQL: SHOW COLUMNS FROM `gene` [ RunTime:0.006188s ]
+SQL: SELECT `gene_id`,`name`,`parent_id`,`level`,`left_value`,`right_value` FROM `gene` WHERE ( `biodatabase_id` = 1 ) ORDER BY level  [ RunTime:0.000527s ]
+
+[ 2013-12-17T23:04:11+08:00 ] 127.0.0.1 /cahec/index.php?s=/Query/geneSelect/family_id/2
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000790s ]
+INFO: CheckLang Behavior ::run [ RunTime:0.001719s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002629s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=1 and node.status=1 [ RunTime:0.000696s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=2 and node.pid=1 and node.status=1 [ RunTime:0.000755s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=3 and node.pid=30 and node.status=1 [ RunTime:0.000816s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=3 and node.pid=40 and node.status=1 [ RunTime:0.000626s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=3 and node.pid=83 and node.status=1 [ RunTime:0.000784s ]
+NOTIC: [8] Undefined index: db_dsn E:\project\zhenghaiyong\cahec\ThinkPHP\Lib\Core\Db.class.php 第 129 行.
+NOTIC: [8] Undefined index: db_params E:\project\zhenghaiyong\cahec\ThinkPHP\Lib\Core\Db.class.php 第 130 行.
+SQL: SHOW COLUMNS FROM `gene` [ RunTime:0.005900s ]
+SQL: SELECT `gene_id`,`name`,`parent_id`,`level`,`left_value`,`right_value` FROM `gene` WHERE ( `biodatabase_id` = 2 ) ORDER BY level  [ RunTime:0.000640s ]
+
+[ 2013-12-17T23:04:13+08:00 ] 127.0.0.1 /cahec/index.php?s=/Query/geneSelect/family_id/1
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000885s ]
+INFO: CheckLang Behavior ::run [ RunTime:0.001894s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002910s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=1 and node.status=1 [ RunTime:0.000687s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=2 and node.pid=1 and node.status=1 [ RunTime:0.000658s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=3 and node.pid=30 and node.status=1 [ RunTime:0.000706s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=3 and node.pid=40 and node.status=1 [ RunTime:0.000493s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=3 and node.pid=83 and node.status=1 [ RunTime:0.000604s ]
+NOTIC: [8] Undefined index: db_dsn E:\project\zhenghaiyong\cahec\ThinkPHP\Lib\Core\Db.class.php 第 129 行.
+NOTIC: [8] Undefined index: db_params E:\project\zhenghaiyong\cahec\ThinkPHP\Lib\Core\Db.class.php 第 130 行.
+SQL: SHOW COLUMNS FROM `gene` [ RunTime:0.005870s ]
+SQL: SELECT `gene_id`,`name`,`parent_id`,`level`,`left_value`,`right_value` FROM `gene` WHERE ( `biodatabase_id` = 1 ) ORDER BY level  [ RunTime:0.000599s ]
+
+[ 2013-12-17T23:04:20+08:00 ] 127.0.0.1 /cahec/index.php?s=/Query/displaySearch/family_id/1/id/virus_name
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000780s ]
+INFO: CheckLang Behavior ::run [ RunTime:0.001773s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002681s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=1 and node.status=1 [ RunTime:0.000699s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=2 and node.pid=1 and node.status=1 [ RunTime:0.000675s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=3 and node.pid=30 and node.status=1 [ RunTime:0.000660s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=3 and node.pid=40 and node.status=1 [ RunTime:0.000475s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=3 and node.pid=83 and node.status=1 [ RunTime:0.000835s ]
+NOTIC: [8] Undefined index: db_dsn E:\project\zhenghaiyong\cahec\ThinkPHP\Lib\Core\Db.class.php 第 129 行.
+NOTIC: [8] Undefined index: db_params E:\project\zhenghaiyong\cahec\ThinkPHP\Lib\Core\Db.class.php 第 130 行.
+SQL: SHOW COLUMNS FROM `bioentry` [ RunTime:0.008241s ]
+SQL: SELECT DISTINCT  `virus_name` FROM `bioentry` WHERE ( `biodatabase_id` = 1 ) AND ( `is_usable` = 'Y' )  [ RunTime:0.015092s ]
+
+[ 2013-12-17T23:04:30+08:00 ] 127.0.0.1 /cahec/index.php?s=/Query/displaySearch/family_id/1/id/species
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000890s ]
+INFO: CheckLang Behavior ::run [ RunTime:0.001749s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002758s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=1 and node.status=1 [ RunTime:0.001263s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=2 and node.pid=1 and node.status=1 [ RunTime:0.001025s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=3 and node.pid=30 and node.status=1 [ RunTime:0.000781s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=3 and node.pid=40 and node.status=1 [ RunTime:0.001612s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=3 and node.pid=83 and node.status=1 [ RunTime:0.001077s ]
+NOTIC: [8] Undefined index: db_dsn E:\project\zhenghaiyong\cahec\ThinkPHP\Lib\Core\Db.class.php 第 129 行.
+NOTIC: [8] Undefined index: db_params E:\project\zhenghaiyong\cahec\ThinkPHP\Lib\Core\Db.class.php 第 130 行.
+SQL: SHOW COLUMNS FROM `bioentry` [ RunTime:0.006929s ]
+SQL: SELECT DISTINCT  `species` FROM `bioentry` WHERE ( `biodatabase_id` = 1 ) AND ( `is_usable` = 'Y' )  [ RunTime:0.011560s ]
+
+[ 2013-12-17T23:04:32+08:00 ] 127.0.0.1 /cahec/index.php?s=/Query/displaySearch/family_id/1/id/genus
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001111s ]
+INFO: CheckLang Behavior ::run [ RunTime:0.001955s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003199s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=1 and node.status=1 [ RunTime:0.000674s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=2 and node.pid=1 and node.status=1 [ RunTime:0.000960s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=3 and node.pid=30 and node.status=1 [ RunTime:0.000695s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=3 and node.pid=40 and node.status=1 [ RunTime:0.000622s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=3 and node.pid=83 and node.status=1 [ RunTime:0.000590s ]
+NOTIC: [8] Undefined index: db_dsn E:\project\zhenghaiyong\cahec\ThinkPHP\Lib\Core\Db.class.php 第 129 行.
+NOTIC: [8] Undefined index: db_params E:\project\zhenghaiyong\cahec\ThinkPHP\Lib\Core\Db.class.php 第 130 行.
+SQL: SHOW COLUMNS FROM `bioentry` [ RunTime:0.008355s ]
+SQL: SELECT DISTINCT  `genus` FROM `bioentry` WHERE ( `biodatabase_id` = 1 ) AND ( `is_usable` = 'Y' )  [ RunTime:0.012243s ]
+
+[ 2013-12-17T23:04:33+08:00 ] 127.0.0.1 /cahec/index.php?s=/Query/result_ajax/
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000877s ]
+INFO: CheckLang Behavior ::run [ RunTime:0.001902s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002894s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=1 and node.status=1 [ RunTime:0.000753s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=2 and node.pid=1 and node.status=1 [ RunTime:0.000596s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=3 and node.pid=30 and node.status=1 [ RunTime:0.000612s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=3 and node.pid=40 and node.status=1 [ RunTime:0.000422s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=3 and node.pid=83 and node.status=1 [ RunTime:0.000528s ]
+NOTIC: [8] Undefined index: db_dsn E:\project\zhenghaiyong\cahec\ThinkPHP\Lib\Core\Db.class.php 第 129 行.
+NOTIC: [8] Undefined index: db_params E:\project\zhenghaiyong\cahec\ThinkPHP\Lib\Core\Db.class.php 第 130 行.
+SQL: SHOW COLUMNS FROM `bioentry` [ RunTime:0.015097s ]
+SQL: SHOW COLUMNS FROM `gene` [ RunTime:0.006211s ]
+NOTIC: [8] Undefined variable: gene_sql E:\project\zhenghaiyong\cahec\VRL\Common\common.php 第 220 行.
+SQL: SELECT bioentry.bioentry_id,B.value AS sequence_version,bioentry.accession,bioentry.subfamily,bioentry.genus,bioentry.species,bioentry.virus_name,bioentry.isolation_year,bioentry.isolation_country,bioentry.host,bioentry.typeA,bioentry.typeB,bioentry.subtype,bioentry.subsubtype,bioentry.subsubsubtype,biosequence.length,bioentry.gene FROM bioentry LEFT JOIN biosequence ON bioentry.bioentry_id = biosequence.bioentry_id LEFT JOIN bioentry_qualifier_value as B ON bioentry.bioentry_id =  B.bioentry_id WHERE bioentry.is_usable = 'Y' AND  B.term_id IN (SELECT term_id FROM term WHERE term.name='sequence_version') AND biodatabase_id IN (1) AND bioentry.virus_name IN ('Aquabirnavirus AKK02SS') AND (bioentry.gene LIKE '%Segment A%' OR bioentry.gene LIKE '%Ployprotein%' OR bioentry.gene LIKE '%Others%' OR bioentry.gene LIKE '%VP4%' OR bioentry.gene LIKE '%VP3%' OR bioentry.gene LIKE '%VP2%' OR bioentry.gene LIKE '%Others%') AND bioentry.isolation_country IN ('China') ORDER BY bioentry.bioentry_id asc [ RunTime:0.020859s ]
+
+[ 2013-12-17T23:04:35+08:00 ] 127.0.0.1 /cahec/index.php?s=/Query/geneSelect/family_id/1
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000812s ]
+INFO: CheckLang Behavior ::run [ RunTime:0.001787s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002721s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=1 and node.status=1 [ RunTime:0.000706s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=2 and node.pid=1 and node.status=1 [ RunTime:0.000754s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=3 and node.pid=30 and node.status=1 [ RunTime:0.001055s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=3 and node.pid=40 and node.status=1 [ RunTime:0.000619s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=3 and node.pid=83 and node.status=1 [ RunTime:0.000831s ]
+NOTIC: [8] Undefined index: db_dsn E:\project\zhenghaiyong\cahec\ThinkPHP\Lib\Core\Db.class.php 第 129 行.
+NOTIC: [8] Undefined index: db_params E:\project\zhenghaiyong\cahec\ThinkPHP\Lib\Core\Db.class.php 第 130 行.
+SQL: SHOW COLUMNS FROM `gene` [ RunTime:0.006487s ]
+SQL: SELECT `gene_id`,`name`,`parent_id`,`level`,`left_value`,`right_value` FROM `gene` WHERE ( `biodatabase_id` = 1 ) ORDER BY level  [ RunTime:0.000578s ]
+
+[ 2013-12-17T23:04:36+08:00 ] 127.0.0.1 /cahec/index.php?s=/Query/displaySearch/family_id/1/id/subfamily
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000790s ]
+INFO: CheckLang Behavior ::run [ RunTime:0.001747s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002658s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=1 and node.status=1 [ RunTime:0.001059s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=2 and node.pid=1 and node.status=1 [ RunTime:0.000868s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=3 and node.pid=30 and node.status=1 [ RunTime:0.000716s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=3 and node.pid=40 and node.status=1 [ RunTime:0.000477s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=3 and node.pid=83 and node.status=1 [ RunTime:0.000629s ]
+NOTIC: [8] Undefined index: db_dsn E:\project\zhenghaiyong\cahec\ThinkPHP\Lib\Core\Db.class.php 第 129 行.
+NOTIC: [8] Undefined index: db_params E:\project\zhenghaiyong\cahec\ThinkPHP\Lib\Core\Db.class.php 第 130 行.
+SQL: SHOW COLUMNS FROM `bioentry` [ RunTime:0.009110s ]
+SQL: SELECT DISTINCT  `subfamily` FROM `bioentry` WHERE ( `biodatabase_id` = 1 ) AND ( `is_usable` = 'Y' )  [ RunTime:0.013048s ]
+
+[ 2013-12-17T23:04:39+08:00 ] 127.0.0.1 /cahec/index.php?s=/Query/result_ajax/
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001219s ]
+INFO: CheckLang Behavior ::run [ RunTime:0.002702s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004098s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=1 and node.status=1 [ RunTime:0.000663s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=2 and node.pid=1 and node.status=1 [ RunTime:0.000579s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=3 and node.pid=30 and node.status=1 [ RunTime:0.000592s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=3 and node.pid=40 and node.status=1 [ RunTime:0.000439s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=3 and node.pid=83 and node.status=1 [ RunTime:0.000526s ]
+NOTIC: [8] Undefined index: db_dsn E:\project\zhenghaiyong\cahec\ThinkPHP\Lib\Core\Db.class.php 第 129 行.
+NOTIC: [8] Undefined index: db_params E:\project\zhenghaiyong\cahec\ThinkPHP\Lib\Core\Db.class.php 第 130 行.
+SQL: SHOW COLUMNS FROM `bioentry` [ RunTime:0.007077s ]
+SQL: SELECT bioentry.bioentry_id,B.value AS sequence_version,bioentry.accession,bioentry.subfamily,bioentry.genus,bioentry.species,bioentry.virus_name,bioentry.isolation_year,bioentry.isolation_country,bioentry.host,bioentry.typeA,bioentry.typeB,bioentry.subtype,bioentry.subsubtype,bioentry.subsubsubtype,biosequence.length,bioentry.gene FROM bioentry LEFT JOIN biosequence ON bioentry.bioentry_id = biosequence.bioentry_id LEFT JOIN bioentry_qualifier_value as B ON bioentry.bioentry_id =  B.bioentry_id WHERE bioentry.is_usable = 'Y' AND  B.term_id IN (SELECT term_id FROM term WHERE term.name='sequence_version') AND biodatabase_id IN (1) ORDER BY bioentry.bioentry_id asc [ RunTime:0.167603s ]
+
+[ 2013-12-17T23:05:13+08:00 ] 127.0.0.1 /cahec/index.php?s=/Query/geneSelect/family_id/1
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000779s ]
+INFO: CheckLang Behavior ::run [ RunTime:0.001798s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002691s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=1 and node.status=1 [ RunTime:0.000834s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=2 and node.pid=1 and node.status=1 [ RunTime:0.000805s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=3 and node.pid=30 and node.status=1 [ RunTime:0.000812s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=3 and node.pid=40 and node.status=1 [ RunTime:0.000661s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=3 and node.pid=83 and node.status=1 [ RunTime:0.000812s ]
+NOTIC: [8] Undefined index: db_dsn E:\project\zhenghaiyong\cahec\ThinkPHP\Lib\Core\Db.class.php 第 129 行.
+NOTIC: [8] Undefined index: db_params E:\project\zhenghaiyong\cahec\ThinkPHP\Lib\Core\Db.class.php 第 130 行.
+SQL: SHOW COLUMNS FROM `gene` [ RunTime:0.006210s ]
+SQL: SELECT `gene_id`,`name`,`parent_id`,`level`,`left_value`,`right_value` FROM `gene` WHERE ( `biodatabase_id` = 1 ) ORDER BY level  [ RunTime:0.000727s ]
+
+[ 2013-12-17T23:05:18+08:00 ] 127.0.0.1 /cahec/index.php?s=/Query/result_ajax/
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001177s ]
+INFO: CheckLang Behavior ::run [ RunTime:0.002262s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003638s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=1 and node.status=1 [ RunTime:0.000617s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=2 and node.pid=1 and node.status=1 [ RunTime:0.000610s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=3 and node.pid=30 and node.status=1 [ RunTime:0.000602s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=3 and node.pid=40 and node.status=1 [ RunTime:0.000421s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=3 and node.pid=83 and node.status=1 [ RunTime:0.000524s ]
+NOTIC: [8] Undefined index: db_dsn E:\project\zhenghaiyong\cahec\ThinkPHP\Lib\Core\Db.class.php 第 129 行.
+NOTIC: [8] Undefined index: db_params E:\project\zhenghaiyong\cahec\ThinkPHP\Lib\Core\Db.class.php 第 130 行.
+SQL: SHOW COLUMNS FROM `bioentry` [ RunTime:0.006633s ]
+SQL: SELECT bioentry.bioentry_id,B.value AS sequence_version,bioentry.accession,bioentry.subfamily,bioentry.genus,bioentry.species,bioentry.virus_name,bioentry.isolation_year,bioentry.isolation_country,bioentry.host,bioentry.typeA,bioentry.typeB,bioentry.subtype,bioentry.subsubtype,bioentry.subsubsubtype,biosequence.length,bioentry.gene FROM bioentry LEFT JOIN biosequence ON bioentry.bioentry_id = biosequence.bioentry_id LEFT JOIN bioentry_qualifier_value as B ON bioentry.bioentry_id =  B.bioentry_id WHERE bioentry.is_usable = 'Y' AND  B.term_id IN (SELECT term_id FROM term WHERE term.name='sequence_version') AND biodatabase_id IN (1) AND bioentry.isolation_country IN ('Taiwan') ORDER BY bioentry.bioentry_id asc [ RunTime:0.021391s ]
+
+[ 2013-12-17T23:05:22+08:00 ] 127.0.0.1 /cahec/index.php?s=/Query/result_ajax/
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000818s ]
+INFO: CheckLang Behavior ::run [ RunTime:0.002016s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002965s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=1 and node.status=1 [ RunTime:0.001135s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=2 and node.pid=1 and node.status=1 [ RunTime:0.001219s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=3 and node.pid=30 and node.status=1 [ RunTime:0.000861s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=3 and node.pid=40 and node.status=1 [ RunTime:0.000634s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=3 and node.pid=83 and node.status=1 [ RunTime:0.000773s ]
+NOTIC: [8] Undefined index: db_dsn E:\project\zhenghaiyong\cahec\ThinkPHP\Lib\Core\Db.class.php 第 129 行.
+NOTIC: [8] Undefined index: db_params E:\project\zhenghaiyong\cahec\ThinkPHP\Lib\Core\Db.class.php 第 130 行.
+SQL: SHOW COLUMNS FROM `bioentry` [ RunTime:0.006820s ]
+SQL: SELECT bioentry.bioentry_id,B.value AS sequence_version,bioentry.accession,bioentry.subfamily,bioentry.genus,bioentry.species,bioentry.virus_name,bioentry.isolation_year,bioentry.isolation_country,bioentry.host,bioentry.typeA,bioentry.typeB,bioentry.subtype,bioentry.subsubtype,bioentry.subsubsubtype,biosequence.length,bioentry.gene FROM bioentry LEFT JOIN biosequence ON bioentry.bioentry_id = biosequence.bioentry_id LEFT JOIN bioentry_qualifier_value as B ON bioentry.bioentry_id =  B.bioentry_id WHERE bioentry.is_usable = 'Y' AND  B.term_id IN (SELECT term_id FROM term WHERE term.name='sequence_version') AND biodatabase_id IN (1) AND bioentry.isolation_country IN ('Taiwan') ORDER BY bioentry.genus desc [ RunTime:0.023821s ]
+
+[ 2013-12-17T23:05:23+08:00 ] 127.0.0.1 /cahec/index.php?s=/Query/result_ajax/
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.001247s ]
+INFO: CheckLang Behavior ::run [ RunTime:0.002583s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004002s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=1 and node.status=1 [ RunTime:0.000801s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=2 and node.pid=1 and node.status=1 [ RunTime:0.000842s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=3 and node.pid=30 and node.status=1 [ RunTime:0.000759s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=3 and node.pid=40 and node.status=1 [ RunTime:0.000505s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=3 and node.pid=83 and node.status=1 [ RunTime:0.000603s ]
+NOTIC: [8] Undefined index: db_dsn E:\project\zhenghaiyong\cahec\ThinkPHP\Lib\Core\Db.class.php 第 129 行.
+NOTIC: [8] Undefined index: db_params E:\project\zhenghaiyong\cahec\ThinkPHP\Lib\Core\Db.class.php 第 130 行.
+SQL: SHOW COLUMNS FROM `bioentry` [ RunTime:0.008409s ]
+SQL: SELECT bioentry.bioentry_id,B.value AS sequence_version,bioentry.accession,bioentry.subfamily,bioentry.genus,bioentry.species,bioentry.virus_name,bioentry.isolation_year,bioentry.isolation_country,bioentry.host,bioentry.typeA,bioentry.typeB,bioentry.subtype,bioentry.subsubtype,bioentry.subsubsubtype,biosequence.length,bioentry.gene FROM bioentry LEFT JOIN biosequence ON bioentry.bioentry_id = biosequence.bioentry_id LEFT JOIN bioentry_qualifier_value as B ON bioentry.bioentry_id =  B.bioentry_id WHERE bioentry.is_usable = 'Y' AND  B.term_id IN (SELECT term_id FROM term WHERE term.name='sequence_version') AND biodatabase_id IN (1) AND bioentry.isolation_country IN ('Taiwan') ORDER BY bioentry.isolation_country asc [ RunTime:0.019705s ]
+
+[ 2013-12-17T23:05:25+08:00 ] 127.0.0.1 /cahec/index.php?s=/Query/result_ajax/
+INFO: [ app_begin ] --START--
+INFO: ReadHtmlCache Behavior ::run [ RunTime:0.000793s ]
+INFO: CheckLang Behavior ::run [ RunTime:0.001728s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002639s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=1 and node.status=1 [ RunTime:0.000660s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=2 and node.pid=1 and node.status=1 [ RunTime:0.000713s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=3 and node.pid=30 and node.status=1 [ RunTime:0.001042s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=3 and node.pid=40 and node.status=1 [ RunTime:0.001872s ]
+SQL: select node.id,node.name from vrl_role as role,vrl_role_user as user,vrl_access as access ,vrl_node as node where user.user_id='3' and user.role_id=role.id and ( access.role_id=role.id  or (access.role_id=role.pid and role.pid!=0 ) ) and role.status=1 and access.node_id=node.id and node.level=3 and node.pid=83 and node.status=1 [ RunTime:0.001102s ]
+NOTIC: [8] Undefined index: db_dsn E:\project\zhenghaiyong\cahec\ThinkPHP\Lib\Core\Db.class.php 第 129 行.
+NOTIC: [8] Undefined index: db_params E:\project\zhenghaiyong\cahec\ThinkPHP\Lib\Core\Db.class.php 第 130 行.
+SQL: SHOW COLUMNS FROM `bioentry` [ RunTime:0.050501s ]
+SQL: SELECT bioentry.bioentry_id,B.value AS sequence_version,bioentry.accession,bioentry.subfamily,bioentry.genus,bioentry.species,bioentry.virus_name,bioentry.isolation_year,bioentry.isolation_country,bioentry.host,bioentry.typeA,bioentry.typeB,bioentry.subtype,bioentry.subsubtype,bioentry.subsubsubtype,biosequence.length,bioentry.gene FROM bioentry LEFT JOIN biosequence ON bioentry.bioentry_id = biosequence.bioentry_id LEFT JOIN bioentry_qualifier_value as B ON bioentry.bioentry_id =  B.bioentry_id WHERE bioentry.is_usable = 'Y' AND  B.term_id IN (SELECT term_id FROM term WHERE term.name='sequence_version') AND biodatabase_id IN (1) AND bioentry.isolation_country IN ('Taiwan') ORDER BY biosequence.length asc [ RunTime:0.029022s ]
+

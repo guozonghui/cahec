@@ -5,36 +5,7 @@ class QueryAction extends CommonAction {
 		$BioDB = M('biodatabase',null,'DB_VRL');
 		$family = $BioDB->field('biodatabase_id,name')->select();
 		$this->assign("family",$family);
-//gene 此处未找出排列关系  建议改变数据表结构
-		/*$Gene = M('gene',null,'DB_VRL');
-		$gene = $Gene->field('gene_id,name,parent_id,level')->order('level')->select();
-		$this->assign("gene",$gene);
-		
-
-		
-		$BioEntry = M('bioentry',null,'DB_VRL');
-		$condition['is_usable'] = 'Y';
-		// host 该表中有重复的host 无法读取id
-		$BioEntry = M('bioentry',null,'DB_VRL');
-		$condition['is_usable'] = 'Y';
-		$condition['biodatabase_id'] = 1;
-		// host
-		$host = $BioEntry->Distinct(true)->where($condition)->field('host')->select();
-		foreach($host as $k=>$v){ $host_filter[$k] = array_filter($host[$k]); }
-		$host = array_filter($host_filter);
-		sort($host);
-		$this->assign("host",$host);
-		// country
-		/*$country = $BioEntry->Distinct(true)->where($condition)->field('isolation_country')->select();
-		foreach($country as $k=>$v){ $country_filter[$k] = array_filter($country[$k]); }
-		$country = array_filter($country_filter);
-		sort($country);*/
-		/*$Country = M('country',null,'DB_VRL');
-		$country_1 = $Country->field('country')->select();
-		$this->assign("country",$country_1);*/
-		
 		unset($condition);
-
 		$this->display();
 	}
 	public function displaySearch(){
@@ -49,36 +20,11 @@ class QueryAction extends CommonAction {
 		$condition['biodatabase_id'] = $_GET['family_id'];
 		$Gene = M('gene',null,'DB_VRL');
 		$gene = $Gene->field('gene_id,name,parent_id,level,left_value,right_value')->where($condition)->order('level')->select();
-		//$this->ajaxReturn($genus,"success",'1');
 		$this->ajaxReturn($gene,"success",'1');
-	}
-	
-	public function queryAddress(){
-		$id = $_GET['shengfen_id'];
-		$Method = M("Shengfen");
-		$arr_2 = $Method->where("pid=".$id)->select();
-		if(empty($arr_2)){
-			$arr_2 = 0;
-		}
-		else{
-			$condition_3['pid'] = $arr_2[0]["id"];
-			$arr_3 = $Method->where($condition_3)->select();
-			if(empty($arr_3)){
-				$arr_3 =0;
-			}
-		}
-		$this->ajaxReturn(json_encode(array('arr_2'=>$arr_2, 'arr_3'=>$arr_3)),"success",$id);
-		
-
-	}
-	
+	}	
 	public function result(){
 		$query_fields = explode("||",$_POST['post_data']);
 	//0=>family 1=>subfamily 2=>genus 3=>species 4=>virus_name 5=>host 6=>typeA 7=>typeB 8=>subType 9=>subsubType 10=>subsubsubType 11=>gene 12=>country 13=>from 14=>to 15=>flen 16=>tlen
-		/*$BioEntry = M('bioentry',null,'DB_VRL');
-		$condition['is_usable'] = 'Y';
-		if($query_fields[0] != '0')
-			$condition['biodatabase_id'] = array("in",$query_fields[0]);*/
 		$BioEntry = M('bioentry',null,'DB_VRL');
 		$sql = "SELECT count(*) FROM bioentry LEFT JOIN biosequence ON bioentry.bioentry_id = biosequence.bioentry_id WHERE is_usable = 'Y'";
 		if($query_fields[0] !='0'){
@@ -125,10 +71,6 @@ class QueryAction extends CommonAction {
 			$sql .= " AND bioentry.subsubsubtype = ".$subsubsubtype;
 		}
 		if($query_fields[11] != '0'){
-			/*$gene_sql = "SELECT left,right FROM gene WHERE gene_id IN (".$query_fields[11].")";
-			$gene_l_r = $BioEntry->query($gene_sql);
-			$sql .= " AND bioentry.bioentry_id IN (SELECT bioentry_id FROM bioentry_gene WHERE gene_id IN (SELECT gene_id FROM gene WHERE gene_id IN (".$query_fields[11].") OR parent_id IN (".$query_fields[11].")))";*/
-			//$sql .= " AND bioentry.bioentry_id IN (SELECT bioentry_id FROM bioentry_gene WHERE gene_id IN (".$query_fields[11]."))"; 
 			$sql .= " AND (".analysis_gene($query_fields[11]).")";
 		}
 		if($query_fields[12] != '0'){
@@ -149,29 +91,13 @@ class QueryAction extends CommonAction {
 		if($query_fields[16] != 0){
 			$sql .=  " AND biosequence.length <= ".$query_fields[16];
 		}
-		//dump($sql);
 		$show_bioentry_count = $BioEntry->query($sql);
-		//dump($show_bioentry_count);
-		//$show_bioentry_count = $BioEntry->where($condition)->count();
 		$this->assign('post_data',$_POST['post_data']);
 		$this->assign('show_bioentry_count',$show_bioentry_count[0]['count(*)']);
 		$this->display();
 	}
 
 	public function result_ajax() {
-// 1、根据输入查询条件得到数据库查询字段。
-// 2、根据数据库查询字段得到bioentry_ids。
-// 3、根据bioentry_ids查询输出显示字段。
-
-// 1 2:
-// 输入查询条件全any或空时 => bioseqdbvrl->bioentry => query_bioentry_ids
-// 输入查询条件除family外全any或空时 => bioseqdbvrl->bioentry|biodatabase_id => query_bioentry_ids
-// 其它情况下需要判断某一个查询条件（condition）是否为any（结合family条件：非any和any）查询得到$query_bioentry_ids_by_condition（该数组count是否大于0判断非any和any）再将所有查询条件非any的查询结果根据键值求交集
-// 输入查询条件family为非any和any情况通过count($query_biodatabase_ids)是否大于0来判断
-
-		//***** 1 *****//
-		//$query_fields = I('post.');
-		//dump($query_fields,1,'<pre>',0);
 		$query_fields = explode("||",$_POST['post_data']);
 		$from = 0;
 		$limit = 0;
@@ -223,10 +149,6 @@ class QueryAction extends CommonAction {
 			$sql .= " AND bioentry.subsubsubtype = ".$subsubsubtype;
 		}
 		if($query_fields[11] != '0'){
-			/*$gene_sql = "SELECT left,right FROM gene WHERE gene_id IN (".$query_fields[11].")";
-			$gene_l_r = $BioEntry->query($gene_sql);
-			$sql .= " AND bioentry.bioentry_id IN (SELECT bioentry_id FROM bioentry_gene WHERE gene_id IN (SELECT gene_id FROM gene WHERE gene_id IN (".$query_fields[11].") OR parent_id IN (".$query_fields[11].")))";*/
-			//$sql .= " AND bioentry.bioentry_id IN (SELECT bioentry_id FROM bioentry_gene WHERE gene_id IN (".$query_fields[11]."))"; 
 			$sql .= " AND (".analysis_gene($query_fields[11]).")";
 		}
 		if($query_fields[12] != '0'){
@@ -247,80 +169,22 @@ class QueryAction extends CommonAction {
 		if($query_fields[16] != 0){
 			$sql .=  " AND biosequence.length <= ".$query_fields[16];
 		}
-		/*$sql = "SELECT bioentry.bioentry_id,B.value AS sequence_version,bioentry.accession,A.value AS name,bioentry.isolation_year,bioentry.isolation_country,bioentry.host,bioentry.vrl_type,bioentry.vrl_subtype,bioentry.vrl_subsubtype,bioentry.vrl_subsubsubtype,biosequence.length,gene.name AS gene FROM bioentry LEFT JOIN biosequence ON bioentry.bioentry_id = biosequence.bioentry_id LEFT JOIN bioentry_gene ON bioentry.bioentry_id = bioentry_gene.bioentry_id LEFT JOIN gene ON gene.gene_id = bioentry_gene.gene_id LEFT JOIN  bioentry_qualifier_value as A ON bioentry.bioentry_id =  A.bioentry_id LEFT JOIN bioentry_qualifier_value as B ON bioentry.bioentry_id =  B.bioentry_id WHERE bioentry.is_usable = 'Y' AND  A.term_id IN (SELECT term_id FROM term WHERE term.name='source') AND  B.term_id IN (SELECT term_id FROM term WHERE term.name='sequence_version')";
-			
-			if($query_fields[0] !='0'){
-				$sql .= " AND bioentry.biodatabase_id IN (".$query_fields[0].")";
-			}
-			if($query_fields[1] != '0'){
-				$sql .= " AND bioentry.bioentry_id IN (SELECT bioentry_id FROM bioentry_gene WHERE gene_id IN (".$query_fields[1]."))"; 
-			}
-			if($query_fields[2] != '0'){
-				$host = convertString($query_fields[2]);
-				$sql .= " AND bioentry.host IN (".$host.")";
-			}
-			if($query_fields[3] != '0'){
-				$country = convertString($query_fields[3]);
-				$sql .= " AND bioentry.isolation_country IN (".$country.")";
-			}
-			if($query_fields[4] != '0'){
-				$type = convertString($query_fields[4]);
-				$sql .= " AND bioentry.vrl_type = ".$type;
-			}
-			if($query_fields[5] != '0'){
-				$subtype = convertString($query_fields[5]);
-				$sql .= " AND bioentry.vrl_subtype = ".$subtype;
-			}
-			if($query_fields[6] != '0'){
-				$subsubtype = convertString($query_fields[6]);
-				$sql .= " AND bioentry.vrl_subsubtype = ".$subsubtype;
-			}
-			if($query_fields[7] != '0'){
-				$subsubsubtype = convertString($query_fields[7]);
-				$sql .= " AND bioentry.vrl_subsubsubtype = ".$subsubsubtype;
-			}
-			if($query_fields[8] != '0'){
-				$isolation_year = substr($query_fields[8],0,4);
-				$sql .= " AND bioentry.isolation_year >= ".$isolation_year;
-			}
-			if($query_fields[9] != '0'){
-				$isolation_year = substr($query_fields[9],0,4);
-				$sql .= " AND bioentry.isolation_year <= ".$isolation_year;
-			}
-			if($query_fields[10] != 0){
-				$sql .=  " AND biosequence.length >= ".$query_fields[10];
-			}
-			if($query_fields[11] != 0){
-				$sql .=  " AND biosequence.length <= ".$query_fields[11];
-			}*/
-			//$sql .= " AND bioentry.bioentry_id > ".$from;
-			switch($orderby){
-				case "length":
-					$sql .= " ORDER BY biosequence.".$orderby." ".$order_line;
-					break;
-				case "gene":
-					$sql .= " ORDER BY ".$orderby." ".$order_line;
-					break;
-				case "name":
-					$sql .= " ORDER BY ".$orderby." ".$order_line;
-					break;
-				default:
-					$sql .= " ORDER BY bioentry.".$orderby." ".$order_line;
-					break;
-			}
-			//$sql .= " limit ".$limit;
-			
-			
-			/*$count = $query_bioentry_count;
-			$p = new Page($count,10);
-			$sql = "SELECT bioentry.bioentry_id,bioentry.accession,bioentry_qualifier_value.value AS name,bioentry.isolation_year,bioentry.isolation_country,bioentry.host,bioentry.vrl_type,bioentry.vrl_subtype,bioentry.vrl_subsubtype,bioentry.vrl_subsubsubtype,biosequence.length,gene.name AS gene FROM bioentry LEFT JOIN biosequence ON bioentry.bioentry_id = biosequence.bioentry_id LEFT JOIN bioentry_gene ON bioentry.bioentry_id = bioentry_gene.bioentry_id LEFT JOIN gene ON gene.gene_id = bioentry_gene.gene_id LEFT JOIN  bioentry_qualifier_value ON bioentry.bioentry_id =  bioentry_qualifier_value.bioentry_id WHERE bioentry.bioentry_id IN (" .implode(",",$query_bioentry_ids). ") AND bioentry.is_usable = 'Y' AND  bioentry_qualifier_value.term_id IN (SELECT term_id FROM term WHERE term.name='source') ORDER BY bioentry.bioentry_id LIMIT ".$p->firstRow.','.$p->listRows.";";
-			//$list = $Project->order('updatetime DESC')->limit($p->firstRow.','.$p->listRows)->select();
-			$page = $p->show();
-			//$this->assign('list',$list);
-			$this->assign('page',$page);*/
-			$show_bioentry_info = $BioEntry->query($sql);
-			//$show_bioentry_info = delOthers($show_bioentry_info,"Others");
-			$show_bioentry_info = changeDisplayCountry($show_bioentry_info);
+		switch($orderby){
+			case "length":
+				$sql .= " ORDER BY biosequence.".$orderby." ".$order_line;
+				break;
+			case "gene":
+				$sql .= " ORDER BY ".$orderby." ".$order_line;
+				break;
+			case "name":
+				$sql .= " ORDER BY ".$orderby." ".$order_line;
+				break;
+			default:
+				$sql .= " ORDER BY bioentry.".$orderby." ".$order_line;
+				break;
+		}
+		$show_bioentry_info = $BioEntry->query($sql);
+		$show_bioentry_info = changeDisplayCountry($show_bioentry_info);
 		$this->ajaxReturn($show_bioentry_info,"success",'1');
 	}
 
@@ -397,15 +261,10 @@ class QueryAction extends CommonAction {
 			}
 		}
 		$query_field .= "biosequence.seq";
-		//$this->ajaxReturn($query_field,"success",'1');
 		$filename = date("y-m-d-H-i-s").rand();
 		$filepath = "./Public/Download/";
 		$BioEntry = M('bioentry',null,'DB_VRL');
 		$sql = "SELECT ".$query_field." FROM bioentry LEFT JOIN biosequence ON bioentry.bioentry_id = biosequence.bioentry_id WHERE bioentry.bioentry_id IN (" .$check_list. ") AND bioentry.is_usable = 'Y'";
-		
-		//修改数据库结构前的sql-20131217 $sql = "SELECT ".$query_field." FROM bioentry LEFT JOIN biosequence ON bioentry.bioentry_id = biosequence.bioentry_id LEFT JOIN bioentry_gene ON bioentry.bioentry_id = bioentry_gene.bioentry_id LEFT JOIN gene ON gene.gene_id = bioentry_gene.gene_id LEFT JOIN  bioentry_qualifier_value ON bioentry.bioentry_id =  bioentry_qualifier_value.bioentry_id WHERE bioentry.bioentry_id IN (" .$check_list. ") AND bioentry.is_usable = 'Y' AND  bioentry_qualifier_value.term_id IN (SELECT term_id FROM term WHERE term.name='source')";
-		//好用的$sql = "SELECT bioentry.bioentry_id,bioentry.accession,bioentry_qualifier_value.value AS name,bioentry.isolation_year,bioentry.isolation_country,bioentry.host,bioentry.vrl_type,bioentry.vrl_subtype,bioentry.vrl_subsubtype,bioentry.vrl_subsubsubtype,biosequence.length,gene.name AS gene FROM bioentry LEFT JOIN biosequence ON bioentry.bioentry_id = biosequence.bioentry_id LEFT JOIN bioentry_gene ON bioentry.bioentry_id = bioentry_gene.bioentry_id LEFT JOIN gene ON gene.gene_id = bioentry_gene.gene_id LEFT JOIN  bioentry_qualifier_value ON bioentry.bioentry_id =  bioentry_qualifier_value.bioentry_id WHERE bioentry.bioentry_id IN (" .$check_list. ") AND bioentry.is_usable = 'Y' AND  bioentry_qualifier_value.term_id IN (SELECT term_id FROM term WHERE term.name='source')";
-		//$sql = "SELECT bioentry.bioentry_id,bioentry.accession,bioentry_qualifier_value.value AS name,bioentry.isolation_year,bioentry.isolation_country,bioentry.host,bioentry.vrl_type,bioentry.vrl_subtype,bioentry.vrl_subsubtype,bioentry.vrl_subsubsubtype,biosequence.length,gene.name AS gene FROM bioentry LEFT JOIN biosequence ON bioentry.bioentry_id = biosequence.bioentry_id LEFT JOIN bioentry_gene ON bioentry.bioentry_id = bioentry_gene.bioentry_id LEFT JOIN gene ON gene.gene_id = bioentry_gene.gene_id LEFT JOIN  bioentry_qualifier_value ON bioentry.bioentry_id =  bioentry_qualifier_value.bioentry_id WHERE bioentry.bioentry_id IN (" .$check_list. ") AND bioentry.is_usable = 'Y' AND  bioentry_qualifier_value.term_id IN (SELECT term_id FROM term WHERE term.name='source');";
 		switch($orderby){
 			case "length":
 				$sql .= " ORDER BY biosequence.".$orderby." ".$order_line;
@@ -471,7 +330,6 @@ class QueryAction extends CommonAction {
 				break;
 		}
 		download_file($fullpath);
-		//$this->ajaxReturn($m,"success",'1');
 	}
 
 }
